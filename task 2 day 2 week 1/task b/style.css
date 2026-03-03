@@ -1,0 +1,125 @@
+/* ===========================
+   RESET & BASE STYLES
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: hsl(210, 46%, 95%);
+    line-height: 1.6;
+}
+
+/* ===========================
+   LAYOUT SECTION
+=========================== */
+
+.testimonials {
+    padding: 4rem 1.5rem;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 75rem;
+    margin: auto;
+
+    /* Desktop Grid Layout */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+}
+
+/* ===========================
+   CARD STYLES
+=========================== */
+
+.card {
+    padding: 2rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Background Variations */
+
+.card-purple {
+    background-color: hsl(263, 55%, 33%);
+    color: white;
+}
+
+.card-dark {
+    background-color: hsl(217, 19%, 35%);
+    color: white;
+}
+
+.patrick {
+    background-color: hsl(219, 29%, 14%);
+}
+
+.card-light {
+    background-color: white;
+    color: hsl(217, 46%, 11%);
+}
+
+/* ===========================
+   PROFILE (Flexbox)
+=========================== */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile img {
+    width: 2.5rem;
+    border-radius: 50%;
+}
+
+.profile h3 {
+    font-size: 1rem;
+}
+
+.profile p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* ===========================
+   SPECIAL GRID POSITIONS
+=========================== */
+
+.card-purple {
+    grid-column: span 2;
+}
+
+.large {
+    grid-row: span 2;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+/* ===========================
+   MOBILE RESPONSIVE
+=========================== */
+
+@media (max-width: 48rem) {
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card-purple,
+    .wide,
+    .large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
