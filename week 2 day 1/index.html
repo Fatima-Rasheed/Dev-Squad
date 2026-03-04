@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 flex justify-center py-6 px-3 sm:py-10">
+
+  <div class="bg-white w-full max-w-2xl rounded-xl shadow-lg p-4 sm:p-6">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <div class="flex items-center gap-3">
+        <h1 class="text-xl sm:text-2xl font-bold text-slate-800">
+          Notifications
+        </h1>
+        <span id="count"
+          class="bg-blue-900 text-white text-sm px-3 py-1 rounded-md font-semibold">
+          0
+        </span>
+      </div>
+
+      <button onclick="markAllRead()"
+        class="text-slate-500 hover:text-blue-900 text-xs sm:text-sm font-medium">
+        Mark all as read
+      </button>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notifications" class="space-y-3">
+
+      <!-- 1 -->
+      <div class="notification unread flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-blue-50 cursor-pointer">
+        <img src="./assets/img1.jfif"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+        <div class="text-xs sm:text-sm text-slate-600 flex-1">
+          <p>
+            <span class="font-bold text-slate-800">Mark Webber</span>
+            reacted to your recent post
+            <span class="font-bold text-blue-900">My first tournament today!</span>
+            <span class="red-dot inline-block w-2 h-2 bg-red-500 rounded-full ml-2"></span>
+          </p>
+          <p class="text-slate-400 mt-1">1m ago</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="notification unread flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-blue-50 cursor-pointer">
+        <img src="./assets/img 2.jfif"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+        <div class="text-xs sm:text-sm text-slate-600 flex-1">
+          <p>
+            <span class="font-bold text-slate-800">Angela Gray</span>
+            followed you
+            <span class="red-dot inline-block w-2 h-2 bg-red-500 rounded-full ml-2"></span>
+          </p>
+          <p class="text-slate-400 mt-1">5m ago</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="notification unread flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-blue-50 cursor-pointer">
+        <img src="./assets/img 3.jpg"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+        <div class="text-xs sm:text-sm text-slate-600 flex-1">
+          <p>
+            <span class="font-bold text-slate-800">Jacob Thompson</span>
+            has joined your group
+            <span class="font-bold text-blue-900">Chess Club</span>
+            <span class="red-dot inline-block w-2 h-2 bg-red-500 rounded-full ml-2"></span>
+          </p>
+          <p class="text-slate-400 mt-1">1 day ago</p>
+        </div>
+      </div>
+
+      <!-- 4 - Comment with Picture on Right -->
+      <div class="notification unread flex justify-between items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-blue-50 cursor-pointer">
+
+        <div class="flex gap-3 sm:gap-4 flex-1">
+          <img src="./assets/img 4.webp"
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+
+          <div class="text-xs sm:text-sm text-slate-600">
+            <p>
+              <span class="font-bold text-slate-800">Kimberly Smith</span>
+              commented on your picture
+              <span class="red-dot inline-block w-2 h-2 bg-red-500 rounded-full ml-2"></span>
+            </p>
+            <p class="text-slate-400 mt-1">1 week ago</p>
+          </div>
+        </div>
+
+        <img src="./assets/img 2.jfif"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover border hover:scale-105 transition">
+      </div>
+
+      <!-- 5 -->
+      <div class="notification unread flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-blue-50 cursor-pointer">
+        <img src="./assets/img 5.jpg"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+        <div class="text-xs sm:text-sm text-slate-600 flex-1">
+          <p>
+            <span class="font-bold text-slate-800">Nathan Peterson</span>
+            reacted to your post
+            <span class="font-bold text-blue-900">5 end-game strategies</span>
+            <span class="red-dot inline-block w-2 h-2 bg-red-500 rounded-full ml-2"></span>
+          </p>
+          <p class="text-slate-400 mt-1">2 weeks ago</p>
+        </div>
+      </div>
+
+      <!-- 6 - Private Message -->
+      <div class="notification flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-slate-100 cursor-pointer">
+        <img src="./assets/img 6.webp"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+        <div class="text-xs sm:text-sm text-slate-600 flex-1">
+          <p>
+            <span class="font-bold text-slate-800">Rizky Hasanuddin</span>
+            sent you a private message
+          </p>
+          <p class="text-slate-400 mt-1">5 days ago</p>
+
+          <div class="mt-3 p-3 border rounded-md hover:bg-slate-50">
+            Hello, thanks for setting up the Chess Club.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  const notifications = document.querySelectorAll(".notification");
+  const countElement = document.getElementById("count");
+
+  notifications.forEach(notification => {
+    notification.addEventListener("click", function () {
+      if (this.classList.contains("unread")) {
+        this.classList.remove("unread", "bg-blue-50");
+        this.classList.add("hover:bg-slate-100");
+
+        const dot = this.querySelector(".red-dot");
+        if (dot) dot.remove();
+
+        updateCount();
+      }
+    });
+  });
+
+  function markAllRead() {
+    const unread = document.querySelectorAll(".notification.unread");
+
+    unread.forEach(notification => {
+      notification.classList.remove("unread", "bg-blue-50");
+      notification.classList.add("hover:bg-slate-100");
+
+      const dot = notification.querySelector(".red-dot");
+      if (dot) dot.remove();
+    });
+
+    updateCount();
+  }
+
+  function updateCount() {
+    const unreadCount = document.querySelectorAll(".notification.unread").length;
+    countElement.textContent = unreadCount;
+  }
+
+  updateCount();
+</script>
+
+</body>
+</html>
