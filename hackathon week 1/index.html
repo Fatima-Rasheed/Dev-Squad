@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Collection Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#e78a4e',
+                            dark: '#1e140a',
+                            light: '#ffffff',
+                            gray: '#a1a1aa'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(30, 20, 10, 0.8), rgba(30, 20, 10, 1)), url('assets/img (23).png')",
+                    }
+                },
+                plugins: [
+                    function ({ addUtilities }) {
+                        addUtilities({
+                            '.scrollbar-hide': {
+                                /* IE and Edge */
+                                '-ms-overflow-style': 'none',
+                                /* Firefox */
+                                'scrollbar-width': 'none',
+                                /* Safari and Chrome */
+                                '&::-webkit-scrollbar': {
+                                    display: 'none'
+                                }
+                            },
+                            '.scrollbar-styled': {
+                                '&::-webkit-scrollbar': {
+                                    width: '8px',
+                                },
+                                '&::-webkit-scrollbar-track': {
+                                    background: '#1e130b',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    background: '#e78a4e',
+                                    borderRadius: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb:hover': {
+                                    background: '#d0753b',
+                                }
+                            }
+                        })
+                    }
+                ]
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #FFFFFF 0%, #e78a4e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-[#1e130b] text-white antialiased overflow-x-hidden scrollbar-styled">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/5 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="#" class="text-2xl font-bold tracking-tight">Logo<span
+                        class="text-brand-orange">Here</span></a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-sm font-medium hover:text-brand-orange transition-colors">About</a>
+                <a href="#collection"
+                    class="text-sm font-medium hover:text-brand-orange transition-colors">Collection</a>
+                <a href="#creator" class="text-sm font-medium hover:text-brand-orange transition-colors">Creator</a>
+                <a href="#roadmap" class="text-sm font-medium hover:text-brand-orange transition-colors">Road Map</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="hidden md:block">
+                <button
+                    class="bg-gradient-to-r from-[#e78a4e] to-[#c76a2e] hover:from-[#c76a2e] hover:to-[#e78a4e] text-white px-8 py-2.5 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(231,138,78,0.3)]">
+                    Sign in
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button class="text-white hover:text-brand-orange focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+        class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-hero-pattern bg-cover bg-center bg-no-repeat min-h-screen flex items-center">
+        <!-- Glow effects -->
+        <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-orange/20 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                        We Have High<br />
+                        Quality <span class="text-brand-orange relative inline-block">NFT<svg
+                                class="absolute top-1/2 -right-16 -translate-y-1/2 w-12 h-12 text-white"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" />
+                            </svg></span>
+                        Collections
+                    </h1>
+                    <p class="text-brand-gray text-base lg:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Lorem ipsum dolor sit amet consectetur. Rhoncus massa suspendisse turpis sed viverra tempus
+                        tortor. Habitant accumsan sagittis in facilisi placerat ac.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-16">
+                        <button
+                            class="bg-gradient-to-r from-[#e78a4e] to-[#c76a2e] hover:shadow-[0_0_20px_rgba(231,138,78,0.4)] text-white px-8 py-3.5 rounded-full font-semibold transition-all">
+                            Get Whitelist
+                        </button>
+                        <button
+                            class="bg-transparent border border-white/30 hover:border-white hover:bg-white/5 text-white px-8 py-3.5 rounded-full font-semibold transition-all">
+                            Contact Us
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div
+                        class="glass-panel rounded-3xl p-6 lg:p-8 inline-flex flex-wrap justify-center lg:justify-start gap-8 lg:gap-16 relative">
+                        <!-- Decorative Star -->
+                        <div class="absolute -top-4 -right-4 text-brand-orange opacity-50">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-1">240k+</h3>
+                            <p class="text-brand-gray text-sm tracking-wide">Total Sale</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-1">100k+</h3>
+                            <p class="text-brand-gray text-sm tracking-wide">Auctions</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-1">240k+</h3>
+                            <p class="text-brand-gray text-sm tracking-wide">Artists</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative mt-12 lg:mt-0 flex justify-center lg:justify-end">
+                    <!-- Main Image frame -->
+                    <div
+                        class="relative rounded-[40px] md:rounded-[80px] overflow-hidden border border-white/20 p-2 glass-panel w-full max-w-md mx-auto z-10">
+                        <img src="assets/img (16).png"
+                            alt="High Quality NFT Tiger"
+                            class="w-full h-auto object-cover rounded-[32px] md:rounded-[72px]" />
+                    </div>
+
+                    <!-- decorative background frame -->
+                    <div
+                        class="absolute top-10 -right-4 lg:-right-10 w-full max-w-md h-full rounded-[40px] md:rounded-[80px] border border-white/10 z-0 hidden md:flex items-center justify-end pr-4">
+                        <button
+                            class="bg-black/50 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors border border-white/10 text-xl font-bold translate-x-1/2">
+                            ;
+                        </button>
+                    </div>
+
+                    <!-- Bottom Outline Star -->
+                    <div class="absolute -bottom-16 right-1/4 w-12 h-12 hidden lg:block opacity-70">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                            class="w-full h-full text-white">
+                            <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-[#1e140a] relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-16">About Us</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Image Grid -->
+                <div class="grid grid-cols-2 gap-4 :gap-6">
+                    <div class="bg-gray-800 rounded-[1rem] overflow-hidden aspect-square">
+            <img src="assets/img (15).png"
+                alt="Tiger NFT 1"
+                class="w-full h-full object-cover">
+        </div>
+
+                    <div class="bg-gray-800 rounded-[1rem] overflow-hidden aspect-square">
+            <img src="assets/img (14).png"
+                alt="Tiger NFT 2"
+                class="w-full h-full object-cover">
+        </div>
+
+                    
+        <div class="bg-gray-800 rounded-[1rem] overflow-hidden aspect-square">
+            <img src="assets/img (13).png"
+                alt="Tiger NFT 3"
+                class="w-full h-full object-cover">
+        </div>
+                     <div class="bg-gray-800 rounded-[1rem] overflow-hidden aspect-square">
+            <img src="assets/img (12).png"
+                alt="Tiger NFT 4"
+                class="w-full h-full object-cover">
+        </div>
+                        
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <p class="text-brand-light text-base lg:text-lg leading-relaxed font-light text-justify">
+                        Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec ultrices eros elit metus morbi
+                        aliquam quis. Suspendisse massa ullamcorper tortor morbi nisi leo. Ultrices leo vel tincidunt
+                        nunc eget elit. Gravida et duis ipsum pellentesque libero. Tellus rhoncus metus et eget mattis
+                        fringilla nec id. Amet ultrices quam ridiculus tellus. Leo adipiscing tincidunt amet nisi semper
+                        adipiscing quam in est. Tempor sed dui nunc diam adipiscing at.
+                    </p>
+                    <p class="text-brand-light text-base lg:text-lg leading-relaxed font-light text-justify mt-4">
+                        Tellus rhoncus metus et eget mattis fringilla nec id. Amet ultrices quam ridiculus tellus. Leo
+                        adipiscing tincidunt amet nisi semper adipiscing quam in est. Tempor sed dui nunc diam
+                        adipiscing at.
+                    </p>
+                    <div class="pt-4">
+                        <button
+                            class="bg-white/20 hover:bg-white/30 border border-white/10 text-white px-8 py-3 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                            Connect Wallet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Collections Section -->
+    <section id="collection" class="py-24 bg-gradient-to-b from-[#1e140a] to-[#140c06] relative w-full overflow-hidden">
+        <!-- Adding some subtle glow above Top Collections like in the design -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent">
+        </div>
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/5 blur-[120px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">Top Collections</h2>
+                <p class="text-brand-light/70 text-sm lg:text-base max-w-md mx-auto">The largest and unique Super rare
+                    NFT marketplace<br>For crypto-collectibles</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (11).png"
+                            alt="Collection 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold mb-1">Nfts Collections</h3>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (10).png"
+                            alt="Collection 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <!-- Intentionally blank space to match design variation -->
+                        <div class="h-6 mb-1"></div>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (9).png"
+                            alt="Collection 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-6 mb-1"></div>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+
+                <!-- Repeat cards for row 2 as seen in Image 3 -->
+                <!-- Card 4 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (17).png"
+                            alt="Collection 4" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-6 mb-1"></div>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (7).png"
+                            alt="Collection 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="h-6 mb-1"></div>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                    class="glass-panel border-white/10 bg-[#2a1a0c]/60 rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex items-center gap-2 mb-8 relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]"></div>
+                        <span class="text-xs text-brand-light/60">Created by</span>
+                        <span class="text-sm text-brand-orange font-medium">James Watson</span>
+                    </div>
+                    <div
+                        class="aspect-square rounded-full overflow-hidden mb-6 max-w-[85%] mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/5 relative z-10">
+                        <img src="assets/img (6).png"
+                            alt="Collection 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold mb-1">Nfts Collections</h3>
+                        <p class="text-xs text-brand-light/60">Created by <span class="text-brand-orange">James
+                                Watson</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 flex justify-center">
+                <button
+                    class="bg-white/10 hover:bg-white/20 border border-white/10 text-brand-light text-sm font-semibold rounded-full px-8 py-3 w-[200px] transition-all">
+                    Explore More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Creators Section -->
+    <section id="creator" class="py-24 bg-[#140c06] relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">Top Creators</h2>
+                <p class="text-brand-light/70 text-sm lg:text-base">Checkout Top Rated Creators On The NFT Marketplace
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Creator Card Template (x8) -->
+                <!-- 1 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">1</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-blue-500/20 to-transparent">
+                        <img src="assets/img (5).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 2 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">2</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-brand-orange/20 to-transparent">
+                        <img src="assets/img (4).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 3 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">3</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-500/20 to-transparent">
+                        <img src="assets/img (3).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 4 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">4</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-purple-500/20 to-transparent">
+                        <img src="assets/img (2).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 5 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">5</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-green-500/20 to-transparent">
+                        <img src="assets/img (1).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 6 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">6</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-indigo-500/20 to-transparent">
+                        <img src="assets/img (8).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 7 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">7</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-600/20 to-transparent">
+                        <img src="assets/img (19).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+                <!-- 8 -->
+                <div
+                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    <span
+                        class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">8</span>
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-gray-500/20 to-transparent">
+                        <img src="assets/img (18).png"
+                            alt="Creator" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Name NFT</h3>
+                    <p class="text-sm text-brand-light/60">Total Sales: <span class="text-brand-light font-medium">34.53
+                            ETH</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Road Map Section -->
+    <section id="roadmap" class="py-24 bg-[#191008] relative bg-cover bg-center bg-no-repeat"
+        style="background-image: linear-gradient(to bottom, rgba(25, 16, 8, 1), rgba(25, 16, 8, 0.8), rgba(25, 16, 8, 1)), url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop')">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-24">Road Map</h2>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Center Line -->
+                <div
+                    class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-brand-orange/50 to-transparent hidden md:block border-l border-dashed border-brand-orange/30">
+                </div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12 md:space-y-0 relative">
+
+                    <!-- Item 1 (Left) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-light shadow-[0_0_10px_white] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 md:text-right">January
+                                    </div>
+                                    <h3 class="text-2xl font-bold mb-3 md:text-right">Brief</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed md:text-right">Lorem ipsum
+                                        dolor sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed
+                                        aliquet donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 (Right) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 text-left">February</div>
+                                    <h3 class="text-2xl font-bold mb-3 text-left">Research</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed text-left">Lorem ipsum dolor
+                                        sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed aliquet
+                                        donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-orange shadow-[0_0_15px_#e78a4e] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12"></div>
+                    </div>
+
+                    <!-- Item 3 (Left) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-light shadow-[0_0_10px_white] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 md:text-right">March</div>
+                                    <h3 class="text-2xl font-bold mb-3 md:text-right">Discover</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed md:text-right">Lorem ipsum
+                                        dolor sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed
+                                        aliquet donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 (Right) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 text-left">April</div>
+                                    <h3 class="text-2xl font-bold mb-3 text-left">Design</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed text-left">Lorem ipsum dolor
+                                        sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed aliquet
+                                        donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-orange shadow-[0_0_15px_#e78a4e] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12"></div>
+                    </div>
+
+                    <!-- Item 5 (Left) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-light shadow-[0_0_10px_white] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 md:text-right">May</div>
+                                    <h3 class="text-2xl font-bold mb-3 md:text-right">Testing</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed md:text-right">Lorem ipsum
+                                        dolor sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed
+                                        aliquet donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 (Right) -->
+                    <div class="md:flex items-center justify-between w-full mb-8">
+                        <div class="order-1 md:w-5/12 pl-12 md:pl-0">
+                            <div
+                                class="bg-[#22150a]/90 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-orange/40 transition-colors shadow-lg relative group overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl group-hover:bg-brand-orange/20 transition-colors">
+                                </div>
+                                <div class="relative z-10">
+                                    <div class="text-sm font-medium text-brand-light/80 mb-2 text-left">June</div>
+                                    <h3 class="text-2xl font-bold mb-3 text-left">Launch & Feedback</h3>
+                                    <p class="text-brand-light/60 text-sm leading-relaxed text-left">Lorem ipsum dolor
+                                        sit amet consectetur. Elit massa erat vitae non semper quis. Morbi sed aliquet
+                                        donec facilisis. Senectus eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-orange shadow-[0_0_15px_#e78a4e] z-10 hidden md:block">
+                        </div>
+                        <div class="order-1 md:w-5/12"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 bg-[#1e140a] relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-24">How It Works</h2>
+
+            <div class="space-y-24">
+                <!-- Row 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-2 md:order-1 relative flex justify-center">
+                        <img src="assets/img (21).png"
+                            alt="Wallet and Coins"
+                            class="w-full max-w-sm h-auto rounded-3xl object-cover mix-blend-lighten opacity-90 shadow-[0_0_30px_rgba(231,138,78,0.15)]">
+                    </div>
+                    <div class="order-1 md:order-2 space-y-6 relative">
+                        <!-- Sparkle -->
+                        <div class="absolute -top-12 left-0 text-white w-12 h-12">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                                <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-4xl lg:text-5xl font-bold leading-tight">Setup And Connect<br>Your Wallet.</h3>
+                        <p class="text-brand-light/60 text-sm leading-relaxed max-w-md">Lorem Ipsum Dolor Sit Amet
+                            Consectetur. Donec Vitae Pellentesque Nunc Ut Sit A Volutpat Elementum. Nunc Elit Nisi
+                            Pellentesque Porta Elementum. Id Mattis Neque Diam Nulla. Amet Et A Felis Pellentesque Sed
+                            Odio.</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+                    <div class="space-y-6 relative z-10">
+                        <h3 class="text-4xl lg:text-5xl font-bold leading-tight">Create Your Own<br>Digital NFT</h3>
+                        <p class="text-brand-light/60 text-sm leading-relaxed max-w-md">Lorem Ipsum Dolor Sit Amet
+                            Consectetur. Donec Vitae Pellentesque Nunc Ut Sit A Volutpat Elementum. Nunc Elit Nisi
+                            Pellentesque Porta Elementum. Id Mattis Neque Diam Nulla. Amet Et A Felis Pellentesque Sed
+                            Odio.</p>
+                    </div>
+                    <div class="relative flex justify-center z-10">
+                        <div class="bg-[#2a1a0c] rounded-[2.5rem] p-4 w-full max-w-sm">
+                            <img src="assets/img (22).png"
+                                alt="Monkey NFT" class="w-full h-auto rounded-3xl object-cover">
+                        </div>
+                    </div>
+                    <!-- Sparkle Bottom Left -->
+                    <div class="absolute -bottom-16 left-[20%] text-white w-12 h-12 hidden md:block">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                            <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" />
+                        </svg>
+                    </div>
+                    <!-- Sparkle Top inside -->
+                    <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-white w-12 h-12 hidden md:block">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                            <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-2 md:order-1 relative flex justify-center">
+                        <img src="assets/img (20).png"
+                            alt="Golden Block Character"
+                            class="w-full max-w-sm h-auto rounded-3xl object-contain drop-shadow-[0_0_30px_rgba(255,215,0,0.15)] mix-blend-lighten">
+                    </div>
+                    <div class="order-1 md:order-2 space-y-6 relative">
+                        <h3 class="text-4xl lg:text-5xl font-bold leading-tight">Setup And Connect<br>Your Wallet.</h3>
+                        <p class="text-brand-light/60 text-sm leading-relaxed max-w-md">Lorem Ipsum Dolor Sit Amet
+                            Consectetur. Donec Vitae Pellentesque Nunc Ut Sit A Volutpat Elementum. Nunc Elit Nisi
+                            Pellentesque Porta Elementum. Id Mattis Neque Diam Nulla. Amet Et A Felis Pellentesque Sed
+                            Odio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Join Community -->
+    <footer class="pt-32 pb-12 bg-[#191008] relative bg-cover bg-center bg-no-repeat w-full mt-10"
+        style="background-image: linear-gradient(to bottom, rgba(25, 16, 8, 1), rgba(25, 16, 8, 0.6), rgba(25, 16, 8, 1)), url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop')">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center">
+
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-6">Join OurCommunity</h2>
+            <p class="text-brand-light/80 text-sm text-center max-w-2xl mx-auto mb-12">Lorem ipsum Dolor Sit Amet
+                Consectetur. Donec Vitae Pellentesque Nunc Ut Sit A Volutpat Elementum. Nunc Elit Nisi Pellentesque
+                Porta Elementum. Id Mattis Neque Diam Nulla. Amet Et A Felis Pellentesque Sed Odio.</p>
+
+            <!-- Newsletter Form -->
+            <form class="flex flex-col sm:flex-row w-full max-w-xl mx-auto gap-4 mb-32">
+                <input type="email" placeholder="Your Email"
+                    class="flex-1 bg-white/[0.65] text-brand-dark px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-orange placeholder:text-brand-dark/50 font-medium">
+                <button type="button"
+                    class="bg-[#8a7f76] hover:bg-[#9a8f86] text-white px-10 py-4 rounded-full font-semibold transition-all shadow-lg whitespace-nowrap">
+                    Join Now
+                </button>
+            </form>
+
+            <!-- Copyright -->
+            <div class="text-center w-full mt-auto">
+                <p class="text-brand-light/40 text-xs">© NFT Market. Use this template freely.</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
