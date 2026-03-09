@@ -1,217 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Fatima Rasheed</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Fatima Rasheed</title>
+
+<style>
+
+/* GENERAL */
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f9;
+    color:#333;
+}
+
+section{
+    padding:40px;
+}
+
+h1,h2,h3,h4{
+    margin-bottom:10px;
+}
+
+a{
+    text-decoration:none;
+    color:#0077cc;
+}
+
+/* HEADER */
+header{
+    background:#222;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+nav a{
+    margin:0 10px;
+    color:white;
+    font-weight:bold;
+}
+
+nav{
+    margin-top:10px;
+}
+
+/* PROFILE */
+section p{
+    max-width:700px;
+}
+
+/* TABLE */
+table{
+    width:60%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table td{
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+/* SKILLS */
+ul,ol{
+    columns:2;
+}
+
+/* PROJECTS */
+section div div{
+    margin-bottom:20px;
+}
+
+/* GALLERY */
+.gallery{
+    text-align:center;
+}
+
+.gallery img{
+    width:220px;
+    height:160px;
+    object-fit:cover;
+    margin:10px;
+    border-radius:10px;
+    border:3px solid #eee;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+    box-shadow:0 8px 18px rgba(0,0,0,0.35);
+}
+
+/* FORM */
+form input{
+    width:300px;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+input[type="submit"]{
+    background:#0077cc;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
 </head>
 
 <body>
 
 <!-- HEADER -->
 <header>
-    <div>
-        <h1>Fatima Rasheed</h1>
-        <h2>Web Development Student</h2>
 
-        <div>
-            <span>Email: fatima@email.com</span><br>
-            <span>Phone: 0300-0000000</span>
-        </div>
-    </div>
+<h1>Fatima Rasheed</h1>
+<h2>Web Development Student</h2>
 
-    <nav>
-        <div>
-            <a href="https://google.com">Portfolio</a>
-            <a href="https://linkedin.com">LinkedIn</a>
-            <a href="https://github.com">GitHub</a>
-            <a href="https://facebook.com">Facebook</a>
-            <a href="https://instagram.com">Instagram</a>
-        </div>
-    </nav>
+<div>
+Email: fatima@email.com <br>
+Phone: 0300-0000000
+</div>
+
+<nav>
+<a href="#">Portfolio</a>
+<a href="#">LinkedIn</a>
+<a href="#">GitHub</a>
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+</nav>
+
 </header>
 
 <!-- PROFILE -->
 <section>
-    <div>
-        <h2>Profile</h2>
 
-        <p>
-            Motivated Software Engineering graduate with interest in 
-            Web Development and UI Design.
-        </p>
+<h2>Profile</h2>
 
-        <p>
-            Passionate about creating user-friendly digital experiences 
-            and learning modern technologies.
-        </p>
+<p>
+Motivated Software Engineering graduate with interest in 
+Web Development and UI Design.
+</p>
 
-        <span>Quick learner • Team player • Creative thinker</span>
-    </div>
+<p>
+Passionate about creating user-friendly digital experiences 
+and learning modern technologies.
+</p>
+
+<span>Quick learner • Team player • Creative thinker</span>
+
 </section>
 
 <!-- EDUCATION -->
 <section>
-    <div>
-        <h2>Education</h2>
 
-        <table border="1">
-            <tr>
-                <td>Degree</td>
-                <td>Institute</td>
-                <td>Year</td>
-            </tr>
+<h2>Education</h2>
 
-            <tr>
-                <td>BS Software Engineering</td>
-                <td>University Name</td>
-                <td>2022</td>
-            </tr>
+<table>
 
-            <tr>
-                <td>Intermediate</td>
-                <td>College Name</td>
-                <td>2018</td>
-            </tr>
-        </table>
-    </div>
+<tr>
+<td><b>Degree</b></td>
+<td><b>Institute</b></td>
+<td><b>Year</b></td>
+</tr>
+
+<tr>
+<td>BS Software Engineering</td>
+<td>University Name</td>
+<td>2022</td>
+</tr>
+
+<tr>
+<td>Intermediate</td>
+<td>College Name</td>
+<td>2018</td>
+</tr>
+
+</table>
+
 </section>
 
 <!-- SKILLS -->
 <section>
-    <div>
-        <h2>Skills</h2>
 
-        <div>
-            <h3>Technical Skills</h3>
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>MongoDB</li>
-                <li>Git</li>
-                <li>Figma</li>
-                <li>UI Design</li>
-                <li>Responsive Design</li>
-            </ul>
-        </div>
+<h2>Skills</h2>
 
-        <div>
-            <h3>Soft Skills</h3>
-            <ol>
-                <li>Communication</li>
-                <li>Teamwork</li>
-                <li>Problem Solving</li>
-                <li>Creativity</li>
-                <li>Time Management</li>
-                <li>Leadership</li>
-                <li>Adaptability</li>
-                <li>Critical Thinking</li>
-                <li>Presentation</li>
-                <li>Collaboration</li>
-            </ol>
-        </div>
-    </div>
+<h3>Technical Skills</h3>
+
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>React</li>
+<li>Node.js</li>
+<li>MongoDB</li>
+<li>Git</li>
+<li>Figma</li>
+<li>UI Design</li>
+<li>Responsive Design</li>
+</ul>
+
+<h3>Soft Skills</h3>
+
+<ol>
+<li>Communication</li>
+<li>Teamwork</li>
+<li>Problem Solving</li>
+<li>Creativity</li>
+<li>Time Management</li>
+<li>Leadership</li>
+<li>Adaptability</li>
+<li>Critical Thinking</li>
+<li>Presentation</li>
+<li>Collaboration</li>
+</ol>
+
 </section>
 
 <!-- PROJECTS -->
 <section>
-    <div>
-        <h2>Projects</h2>
 
-        <div>
-            <h4>Student Management System</h4>
-            <p>Web-based system for managing student data and records.</p>
-            <a href="https://github.com">View Project</a>
-        </div>
+<h2>Projects</h2>
 
-        <div>
-            <h4>E-Commerce Website</h4>
-            <p>Online store with product listing and shopping features.</p>
-            <a href="https://github.com">View Project</a>
-        </div>
+<div>
+<h4>Student Management System</h4>
+<p>Web-based system for managing student data and records.</p>
+<a href="#">View Project</a>
+</div>
 
-        <div>
-            <h4>Portfolio Website</h4>
-            <p>Personal responsive portfolio showcasing projects.</p>
-            <a href="https://github.com">View Project</a>
-        </div>
-    </div>
+<div>
+<h4>E-Commerce Website</h4>
+<p>Online store with product listing and shopping features.</p>
+<a href="#">View Project</a>
+</div>
+
+<div>
+<h4>Portfolio Website</h4>
+<p>Personal responsive portfolio showcasing projects.</p>
+<a href="#">View Project</a>
+</div>
+
 </section>
 
 <!-- CERTIFICATIONS -->
 <section>
-    <div>
-        <h2>Certifications</h2>
 
-        <div><span>Web Development Certificate</span></div>
-        <div><span>UI/UX Design Certificate</span></div>
-        <div><span>JavaScript Certificate</span></div>
-        <div><span>React Certificate</span></div>
-        <div><span>Graphic Design Certificate</span></div>
-    </div>
+<h2>Certifications</h2>
+
+<div>Web Development Certificate</div>
+<div>UI/UX Design Certificate</div>
+<div>JavaScript Certificate</div>
+<div>React Certificate</div>
+<div>Graphic Design Certificate</div>
+
 </section>
 
 <!-- GALLERY -->
-<section>
-    <div>
-        <h2>Project Gallery</h2>
+<section class="gallery">
 
-        <img src="assets/img1 (1).jpg" alt="Project 1">
-        <img src="assets/img1 (2).jpg" alt="Project 2">
-        <img src="assets/img1 (3).jpg" alt="Project 3">
-        <img src="assets/img1 (4).jpg" alt="Project 4">
-        <img src="assets/img1 (5).jpg" alt="Project 5">
-    </div>
+<h2>Project Gallery</h2>
+
+<img src="assets/img1 (1).jpg" alt="Project 1">
+<img src="assets/img1 (2).jpg" alt="Project 2">
+<img src="assets/img1 (3).jpg" alt="Project 3">
+<img src="assets/img1 (4).jpg" alt="Project 4">
+<img src="assets/img1 (5).jpg" alt="Project 5">
+
 </section>
 
 <!-- CONTACT -->
 <section>
-    <div>
-        <h2>Contact Me</h2>
 
-        <form>
-            <div>
-                <label>Name:</label>
-                <input type="text">
-            </div>
+<h2>Contact Me</h2>
 
-            <div>
-                <label>Email:</label>
-                <input type="email">
-            </div>
+<form>
 
-            <div>
-                <label>Phone:</label>
-                <input type="tel">
-            </div>
+<div>
+<label>Name</label><br>
+<input type="text">
+</div>
 
-            <div>
-                <label>Subject:</label>
-                <input type="text">
-            </div>
+<div>
+<label>Email</label><br>
+<input type="email">
+</div>
 
-            <div>
-                <label>Message:</label>
-                <input type="text">
-            </div>
+<div>
+<label>Phone</label><br>
+<input type="tel">
+</div>
 
-            <div>
-                <input type="submit" value="Send Message">
-            </div>
-        </form>
-    </div>
+<div>
+<label>Subject</label><br>
+<input type="text">
+</div>
+
+<div>
+<label>Message</label><br>
+<input type="text">
+</div>
+
+<input type="submit" value="Send Message">
+
+</form>
+
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <div>
-        <h5>References</h5>
-        <p>Available upon request</p>
-        <span>© 2026 Fatima Rasheed</span>
-    </div>
+
+<h5>References</h5>
+<p>Available upon request</p>
+<span>© 2026 Fatima Rasheed</span>
+
 </footer>
 
 </body>
