@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Tailwind Config for Poppins -->
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Navbar -->
+<nav class="bg-black text-white px-6 h-12 flex items-center justify-between">
+  
+  <!-- Left: Logo + Links -->
+  <div class="flex items-center space-x-6 h-full">
+    <!-- Logo -->
+    <img src="assets/a95851f24983fa54346bbe346186cc6aed3039a5.png" alt="Logo" class="h-10 w-auto">
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex space-x-6 text-sm text-gray-200 font-sm h-full items-center">
+      <a href="#" class="hover:text-gray-400">STORE</a>
+      <a href="#" class="hover:text-gray-400">FAQ</a>
+      <a href="#" class="hover:text-gray-400">HELP</a>
+      <a href="#" class="hover:text-gray-400">UNREAL ENGINE</a>
+    </div>
+  </div>
+
+  <!-- Right: World → Sign In → Download → Mobile Menu -->
+  <div class="flex items-center space-x-4 text-gray-200 h-full">
+    
+    <!-- World icon -->
+    <button class="text-gray-200 hover:text-gray-400 text-lg flex items-center h-full">
+      <i class="fa-solid fa-globe"></i>
+    </button>
+
+    <!-- Sign In -->
+    <button class="flex items-center text-gray-200 px-3 rounded text-sm h-full font-medium">
+      <i class="fa-solid fa-user mr-1"></i> SIGN IN
+    </button>
+
+    <!-- Download button full height -->
+    <button class="bg-blue-600 hover:bg-blue-700 text-gray-200 px-4 rounded text-sm h-full flex items-center font-medium">
+      DOWNLOAD
+    </button>
+
+    <!-- Mobile menu button -->
+    <button id="menuBtn" class="md:hidden text-gray-200 text-xl ml-2 flex items-center h-full" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden bg-black text-white px-6 py-4 md:hidden space-y-2">
+  <a href="#" class="block py-2 hover:text-gray-200 font-sm">STORE</a>
+  <a href="#" class="block py-2 hover:text-gray-200 font-sm">FAQ</a>
+  <a href="#" class="block py-2 hover:text-gray-200 font-sm">HELP</a>
+  <a href="#" class="block py-2 hover:text-gray-200 font-sm">UNREAL ENGINE</a>
+</div>
+
+<!-- JavaScript: Toggle Mobile Menu -->
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
