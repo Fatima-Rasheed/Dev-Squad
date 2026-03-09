@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Navbar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="bg-white text-black px-14 py-4 flex justify-between items-center">
+
+    <!-- Left: Logo -->
+    <div>
+      <img src="./assets/img (4).png" alt="Logo" class="w-28">
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="hidden md:flex space-x-6 font-bold text-md ">
+      <a href="#" class="px-4 py-2 rounded-full transition duration-300 hover:bg-orange-500 hover:text-black">Home</a>
+      <a href="#" class="px-4 py-2 rounded-full transition duration-300 hover:bg-orange-500 hover:text-black">Special Offers</a>
+      <a href="#" class="px-4 py-2 rounded-full transition duration-300 hover:bg-orange-500 hover:text-black">Restaurants</a>
+      <a href="#" class="px-4 py-2 rounded-full transition duration-300 hover:bg-orange-500 hover:text-black">Track Order</a>
+    </div>
+
+    <!-- Right: Cart -->
+    <div class="relative">
+      <button onclick="addToCart()"
+        class="flex items-center gap-2 bg-[#0c1b33] text-white px-5 py-2 rounded-full hover:bg-orange-500 transition duration-300">
+        🛒 <span>Cart</span>
+      </button>
+      <span id="cartCount"
+        class="absolute -top-2 -right-2 bg-orange-500 text-black text-xs px-2 py-0.5 rounded-full">
+        0
+      </span>
+    </div>
+
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative w-full h-[477px] px-10 overflow-hidden">
+
+    <!-- Background Image -->
+    <img src="./assets/img (3).png"
+         alt="Background"
+         class="absolute inset-0 w-full h-full object-cover blur-sm  scale-110">
+
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 mx-6 rounded-xl bg-[#0c1b33]/90"></div>
+
+    <!-- Content: Flex Container -->
+    <div class="relative z-10 flex items-center justify-between h-full px-4 md:px-10 mx-4">
+
+      <!-- Left: Text -->
+      <div class="w-1/2 text-white">
+        <p class="text-xl mt-16">I'm lovin' it!</p>
+        <h1 class="text-4xl font-bold mb-2">McDonald’s East London</h1>
+        <div class="flex items-center space-x-6">
+
+          <!-- Box 1: Minimum Order -->
+          <div class="border-2 border-white rounded-3xl px-4 py-2 mt-6 flex items-center space-x-2 text-center text-xs uppercase tracking-wider">
+            <img src="assets/1175932bd4f14db78877d582a7b47d491c6e44f8.png" alt="Min Order" class="w-5 h-5">
+            <span>Minimum Order: 12 GBP</span>
+          </div>
+
+          <!-- Box 2: Delivery Time -->
+          <div class="border-2 border-white rounded-3xl px-4 py-2 mt-6 flex items-center space-x-2 text-center text-xs uppercase tracking-wider">
+            <img src="assets/7e95eb39b37fc1f87e73356c6e975041f028a1ad.png" alt="Delivery Time" class="w-5 h-5">
+            <span>Delivery Time: 20-25 min</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="w-1/2 flex justify-center relative">
+        <img src="./assets/img (3).png" alt="Dish Image" class="rounded-xl object-cover h-96">
+        <img src="assets/img (6).png" class="absolute bottom-0 left-0 -translate-x-1/2 w-32 h-auto object-cover rounded-2xl shadow-xl z-20">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Info Box + Input just under Hero Section -->
+  <div class="mx-7 mb-4 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+
+    <!-- Orange Info Box -->
+    <div class="bg-orange-500 text-white w-fit px-10 py-3 rounded-b-2xl flex items-center space-x-2 shadow-md">
+      <i class="fa-regular fa-clock text-sm"></i>
+      <span class="font-bold text-sm">Open until 3:00 AM</span>
+    </div>
+
+    
+  </div>
+<div class=" flex items-center justify-between px-14 py-8">
+    <h1 class="text-4xl text-black font-bold">All Offers McDonald's East London</h1>
+    <div class="relative w-80">
+      <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-900"></i>
+      <input type="text" placeholder="Search from menu..." class="w-full pl-12 pr-4 py-3 rounded-full border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm">
+    </div>
+  </div>
+  <nav class="w-full bg-orange-500 mt-0">
+    <div class="flex items-center justify-start h-12 px-8 overflow-x-auto no-scrollbar">
+      <a href="cart.html" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Offers</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Burgers</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Fries</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Snacks</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Salads</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Cold Drinks</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Happy Meal</a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Deserts </a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Hot Drinks </a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Sauce </a>
+      <a href="#" class="px-6 py-2 text-white font-bold hover:bg-[#03081F] rounded-full whitespace-nowrap">Hot Orbit</a>
+      </div>
+  </nav>
+<!-- Cart Modal -->
+<div id="cartModal" class="hidden absolute right-0 mt-2 w-80 bg-white shadow-xl rounded-xl z-50 p-4">
+  <h3 class="font-bold text-lg mb-4">Cart</h3>
+  <div id="cartContainer" class="max-h-60 overflow-y-auto mb-4"></div>
+  <div class="flex justify-between font-bold mb-2">
+    <span>Total:</span>
+    <span id="totalPrice">£0.00</span>
+  </div>
+  <button class="w-full bg-orange-500 text-white py-2 rounded-full hover:bg-orange-600 transition">
+    Checkout
+  </button>
+</div>
+ <!-- Burgers Container -->
+<div class="bg-gray-100 p-6">  <h1 class="text-3xl font-bold mb-6">Burgers</h1></div>
+
+
+  <div id="burgerContainer"  class=" mx-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+ 
+  </div>
+  <!-- Fries Section -->
+<div class="bg-gray-100 p-6">  <h1 class="text-3xl font-bold mb-6 text-orange-500">Fries</h1></div>
+<div id="friesContainer" class=" mx-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+  <!-- Fries cards will be injected by JS -->
+</div>
+<!-- Cold Driks -->
+<div class="bg-gray-100 p-6">  <h1 class="text-3xl font-bold mb-6  text-orange-500">Cold Drinks</h1></div>
+
+
+  <div id="coldDrinksContainer"  class=" mx-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+ 
+  </div>
+ <!-- Information Section -->
+<section class="mt-10 mx-6  low-hidden shadow-lg">
+
+  <div class=" rounded-b-2xl  grid grid-cols-1 md:grid-cols-3">
+
+    <!-- Delivery Information -->
+    <div class="bg-white p-12">
+      <div class="flex items-center gap-3 mb-7">
+        <img src="assets/img (12).png" class="w-6 h-6">
+        <h2 class="text-lg font-bold">Delivery Information</h2>
+      </div>
+
+      <p class="text-sm leading-6 text-black">
+       <b>Monday</b> : 12:00 AM–3:00 AM, 8:00 AM–3:00 AM <br>
+       <b>Tuesday</b> : 8:00 AM–3:00 AM <br>
+       <b> Wednesday</b>: 8:00 AM–3:00 AM <br>
+       <b>Thursday</b> : 8:00 AM–3:00 AM <br>
+       <b>Friday</b> : 8:00 AM–3:00 AM <br>
+       <b> Saturday</b>: 8:00 AM–3:00 AM <br>
+       <b>Sunday</b> : 8:00 AM–12:00 AM
+      </p>
+
+      <p class="mt-3 text-sm">
+         <b>Estimated time until delivery:</b>20 min
+      </p>
+    </div>
+
+
+    <!-- Contact Information -->
+    <div class="bg-white p-12  border-gray-200">
+      <div class="flex items-center gap-3 mb-7">
+        <img src="assets/img (14).png" class="w-6 h-6">
+        <h2 class="text-lg font-bold">Contact Information</h2>
+      </div>
+
+      <p class="text-sm text-gray-700">
+        If you have allergies or other dietary restrictions, please contact the restaurant.
+      </p>
+
+      <p class="mt-4 text-sm"><b>Phone:</b> +934443-43</p>
+      <p class="text-sm"><b>Website:</b> http://mcdonalds.uk</p>
+    </div>
+
+
+    <!-- Operational Times -->
+    <div class="bg-[#0c1b33] text-white p-12">
+      <div class="flex items-center gap-3 mb-7">
+        <img src="assets/img (13).png" class="w-6 h-6">
+        <h2 class="text-lg font-bold">Operational Times</h2>
+      </div>
+
+      <p class="text-sm leading-6">
+        <strong>Monday</strong>: 8:00 AM–3:00 AM <br>
+        <strong>Tuesday</strong>: 8:00 AM–3:00 AM <br>
+     <strong>Wenesday</strong>: 8:00 AM–3:00 AM <br>
+       <strong>Thursday</strong>: 8:00 AM–3:00 AM <br>
+       <strong>Friday</strong>: 8:00 AM–3:00 AM <br>
+       <strong>Saturday</strong>: 8:00 AM–3:00 AM <br>
+      <strong>Sunday</strong>: 8:00 AM–3:00 AM
+      </p>
+    </div>
+
+  </div>
+</section>
+<section class="bg-gray-200 w-[90%] mx-auto p-8 mt-16 rounded-xl">
+      <div class="flex justify-between items-start px-12">
+        <div class="text-2xl text-black font-bold">Know more about us!</div>
+
+        <div class="flex gap-6 items-center">
+          <div class="border border-orange-500 px-4 py-2 rounded-3xl text-sm">
+            Frequent Questions
+          </div>
+          <div>Who we are?</div>
+          <div>Partner Program</div>
+          <div>Help & Support</div>
+        </div>
+      </div>
+
+      <div class="w-[90%] mx-auto rounded-xl">
+        <div class="flex flex-col md:flex-row bg-[#03081F] my-16 p-12  gap-12">
+          <div class="md:w-1/2">
+            <h2
+              class="text-2xl font-bold mb-4 py-2 px-4 rounded-3xl bg-orange-600"
+            >
+              How does Order.UK work?
+            </h2>
+            <p class="mb-2 text-white">What payment methods are accepted?</p>
+            <p class="mb-2 text-white">Can I track my order in real-time?</p>
+            <p class="mb-2 text-white">
+              Are there any special discounts or promotions available?
+            </p>
+            <p class="mb-2 text-white">Is Order.UK available in my area?</p>
+          </div>
+
+          <div class="md:w-3/4 flex flex-col">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div
+                class="bg-gray-100 p-4 rounded-xl flex flex-col items-center text-center shadow"
+              >
+                <h3 class="font-bold mb-2">Place an Order!</h3>
+                <img
+                  src="assets/logo (3).png"
+                  alt="Delivery"
+                  class="w-12 h-12 mb-2"
+                />
+                <p class="text-xs text-gray-600">
+                  Place order through our website or Mobile app
+                </p>
+              </div>
+
+              <div
+                class="bg-gray-100 p-4 rounded-xl flex flex-col items-center text-center shadow"
+              >
+                <h3 class="font-bold mb-2">Track Progress</h3>
+                <img
+                  src="assets/logo (2).png"
+                  alt="Ingredients"
+                  class="w-12 h-12 mb-2"
+                />
+                <p class="text-xs text-gray-600">
+                  You can track your order status with delivery time
+                </p>
+              </div>
+
+              <div
+                class="bg-gray-100 p-4 rounded-xl flex flex-col items-center text-center shadow"
+              >
+                <h3 class="font-bold mb-2">Get your Order!</h3>
+                <img
+                  src="assets/logo (1).png"
+                  alt="Support"
+                  class="w-12 h-12 mb-2"
+                />
+                <p class="text-xs text-gray-600">
+                  Receive your order at a lightning fast speed!
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 text-center text-white text-sm">
+              Order.UK simplifies the food ordering process. Browse through our
+              diverse menu, select your favorite dishes, and proceed to
+              checkout. Your delicious meal will be on its way to your doorstep
+              in no time!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <section class="bg-gray-200 mb-16 pb-8">
+  <div class="w-[90%] mx-auto my-8">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center mb-8 gap-8"
+    >
+      <div class="md:w-1/2 pt-10">
+        <h2 class="text-3xl font-bold text-black">Customers Review</h2>
+      </div>
+
+      <div class="md:w-1/2 flex gap-2 pt-10 justify-end">
+        <div class="bg-orange-500 w-12 h-12 flex items-center justify-center rounded-full cursor-pointer hover:scale-105 transition">
+  <img
+    src="assets/p (2).png"
+    class="w-7"
+    onclick="showSlide(2)"
+  >
+</div>
+       <!-- Left Arrow -->
+<div class="bg-orange-500 w-12 h-12 flex items-center justify-center rounded-full cursor-pointer hover:scale-105 transition">
+  <img
+    src="assets/p (2).png"
+    class="w-7 rotate-180"
+    onclick="showSlide(1)"
+  >
+</div>
+
+<!-- Right Arrow -->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="w-[85%] mx-auto overflow-hidden mb-12">
+
+    <div
+      id="reviewSlider"
+      class="flex transition-transform duration-500 ease-in-out"
+    >
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 min-w-full">
+
+        <div class="bg-white p-6 rounded-lg  shadow-md">
+          <div class="flex items-center ">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/p (1).png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/p (1).png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/p (1).png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- SLIDE 2 (same cards again) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 min-w-full">
+
+        <!-- Same 3 cards again -->
+        <!-- Card 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/dacf3c15cfffaae581d294e098c6e189e54be2b3.png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/dacf3c15cfffaae581d294e098c6e189e54be2b3.png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="assets/dacf3c15cfffaae581d294e098c6e189e54be2b3.png">
+            </div>
+
+            <div class="flex justify-between w-full text-sm">
+              <div class="border-l-2 border-[#FC8A06] pl-2">
+                <h4 class="font-bold">St Glx</h4>
+                <p class="text-[#FC8A06]">South London</p>
+              </div>
+
+              <div class="text-right text-[#FC8A06]">
+                ★★★★★
+                <p class="text-xs text-gray-500">24th September, 2023</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-800 text-sm">
+            The positive aspect was undoubtedly the efficiency of the service.
+            The queue moved quickly, the staff was friendly, and the food was
+            up to the usual McDonald's standard – hot and satisfying.
+          </p>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+        <h2 class="text-3xl font-bold text-black pl-16 pb-16">Similar Restaurants</h2>
+ <div class="w-[70%]  flex gap-3 px-6">
+
+    <img src="assets/res (5).png" class="w-full h-48 object-cover rounded-xl">
+
+    <img src="assets/res (4).png" class="w-full h-48 object-cover rounded-xl">
+
+    <img src="assets/res (3).png" class="w-full h-48 object-cover rounded-xl">
+
+    <img src="assets/res 6.png" class="w-full h-48 object-cover rounded-xl">
+
+    <img src="assets/res (2).png" class="w-full h-48 object-cover rounded-xl">
+
+    <img src="assets/res (1).png" class="w-full h-48 object-cover rounded-xl">
+
+  </div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-200 mt-20 pt-14">
+
+  <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-4 gap-12">
+
+    <!-- Column 1 -->
+    <div>
+      <h1 class="text-4xl font-bold mb-6">
+        Order<span class="bg-black text-white text-xs px-1 align-top">.UK</span>
+      </h1>
+
+     <div class="flex gap-4 mb-4">
+
+  <!-- App Store -->
+  <div class="flex items-center gap-2 bg-black text-white px-3 py-2 rounded-full">
+    <img src="assets/Adobe Express - file.png" class="w-6">
+    <span class="text-sm">App Store</span>
+  </div>
+
+  <!-- Play Store -->
+  <div class="flex items-center gap-2 bg-black text-white px-3 py-2 rounded-full">
+    <img src="assets/vector2-Picsart-BackgroundRemover.png" class="w-8">
+    <span class="text-sm">Play Store</span>
+  </div>
+
+</div>
+
+      <p class="text-sm text-gray-600">
+        Company # 490039-445, Registered with House of companies.
+      </p>
+    </div>
+
+
+    <!-- Column 2 -->
+    <div>
+      <h2 class="font-semibold mb-4">
+        Get Exclusive Deals in your Inbox
+      </h2>
+
+      <div class="flex mb-3">
+        <input
+          type="email"
+          placeholder="youremail@gmail.com"
+          class="w-full px-4 py-2 rounded-l-full bg-gray-100 border border-gray-300 focus:outline-none"
+        >
+
+        <button
+          class="bg-orange-500 text-white px-6 rounded-r-full hover:bg-orange-600">
+          Subscribe
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-600 mb-3">
+        we wont spam, read our
+        <span class="underline cursor-pointer">email policy</span>
+      </p>
+
+      <div class="flex gap-3">
+        <img src="assets/s (3).png" class="w-6">
+        <img src="assets/s (2).png" class="w-6">
+        <img src="assets/s (4).png" class="w-6">
+        <img src="assets/s (1).png" class="w-6">
+      </div>
+    </div>
+
+
+    <!-- Column 3 -->
+    <div>
+      <h2 class="font-semibold mb-4">Legal Pages</h2>
+
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="hover:underline cursor-pointer">Terms and conditions</li>
+        <li class="hover:underline cursor-pointer">Privacy</li>
+        <li class="hover:underline cursor-pointer">Cookies</li>
+        <li class="hover:underline cursor-pointer">Modern Slavery Statement</li>
+      </ul>
+    </div>
+
+
+    <!-- Column 4 -->
+    <div>
+      <h2 class="font-semibold mb-4">Important Links</h2>
+
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="hover:underline cursor-pointer">Get help</li>
+        <li class="hover:underline cursor-pointer">Add your restaurant</li>
+        <li class="hover:underline cursor-pointer">Sign up to deliver</li>
+        <li class="hover:underline cursor-pointer">Create a business account</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- Bottom Bar -->
+  <div class="bg-black text-white mt-12 py-4 text-sm">
+    <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+
+      <p>Order.uk Copyright 2025, All Rights Reserved.</p>
+
+      <div class="flex gap-6">
+        <span class="hover:underline cursor-pointer">Privacy Policy</span>
+        <span class="hover:underline cursor-pointer">Terms</span>
+        <span class="hover:underline cursor-pointer">Pricing</span>
+        <span class="hover:underline cursor-pointer">
+          Do not sell or share my personal information
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
