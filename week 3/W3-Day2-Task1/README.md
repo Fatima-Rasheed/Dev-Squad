@@ -36,8 +36,8 @@ W3-Day2-Task1│ ├── config │ ├── db.js │ │middleware │ ├�
 
 Installation & Setup
 
-1. Clone the repository:
-git clone https://github.com/Bisma8090/devsquad26/tree/main/v2-auth-mongodb.git
+1. Repository:
+ https://github.com/Fatima-Rasheed/Dev-Squad/tree/main/week%203/W3-Day2-Task1
 
 2. Navigate to the project directory:
 cd v2-auth-mongodb
