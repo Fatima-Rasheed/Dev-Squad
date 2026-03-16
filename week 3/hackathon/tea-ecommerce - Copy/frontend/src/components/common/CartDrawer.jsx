@@ -6,7 +6,9 @@ const CartDrawer = ({ isOpen, onClose }) => {
   const [cart, setCart] = useState({ items: [], totalItems: 0, totalPrice: 0 });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const DELIVERY = 395;
+  
+  // Updated delivery fee to a dollar-appropriate value
+  const DELIVERY = 5.00; 
 
   const fetchCart = async () => {
     setLoading(true);
@@ -112,7 +114,6 @@ const CartDrawer = ({ isOpen, onClose }) => {
                     {item.product?.name} - {item.variant.name}
                   </p>
 
-                  {/* Quantity + Remove */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '8px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <button
@@ -129,8 +130,9 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         +
                       </button>
                     </div>
+                    {/* Updated to $ */}
                     <p style={{ fontSize: '0.85rem', color: '#333', fontWeight: '500' }}>
-                      Rs. {item.variant.price * item.quantity}
+                      ${(item.variant.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
 
@@ -151,15 +153,18 @@ const CartDrawer = ({ isOpen, onClose }) => {
           <div style={{ borderTop: '1px solid #eee', padding: '20px 24px 24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
               <span style={{ fontSize: '0.85rem', color: '#555' }}>Subtotal</span>
-              <span style={{ fontSize: '0.85rem', color: '#333' }}>Rs. {cart.totalPrice}</span>
+              {/* Updated to $ */}
+              <span style={{ fontSize: '0.85rem', color: '#333' }}>${cart.totalPrice.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid #eee' }}>
               <span style={{ fontSize: '0.85rem', color: '#555' }}>Delivery</span>
-              <span style={{ fontSize: '0.85rem', color: '#333' }}>Rs. {DELIVERY}</span>
+              {/* Updated to $ */}
+              <span style={{ fontSize: '0.85rem', color: '#333' }}>${DELIVERY.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
               <span style={{ fontSize: '0.95rem', color: '#1a1a1a', fontWeight: '500' }}>Total</span>
-              <span style={{ fontSize: '1rem', color: '#1a1a1a', fontWeight: '500' }}>Rs. {cart.totalPrice + DELIVERY}</span>
+              {/* Updated to $ */}
+              <span style={{ fontSize: '1rem', color: '#1a1a1a', fontWeight: '500' }}>${(cart.totalPrice + DELIVERY).toFixed(2)}</span>
             </div>
             <button
               onClick={handlePurchase}

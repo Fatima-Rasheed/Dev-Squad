@@ -96,17 +96,14 @@ const ProductDetail = () => {
         {/* Right — Info */}
         <div style={{ paddingTop: '8px' }}>
 
-          {/* Name */}
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '2rem', color: '#1a1a1a', marginBottom: '12px', lineHeight: '1.2', fontWeight: 'normal' }}>
             {product.name}
           </h1>
 
-          {/* Description */}
           <p style={{ fontSize: '0.85rem', color: '#888', marginBottom: '20px', lineHeight: '1.6' }}>
             {product.description}
           </p>
 
-          {/* Tags */}
           <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{ fontSize: '0.9rem' }}>🌐</span>
@@ -122,12 +119,11 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Price */}
+          {/* Price — Updated to Dollars */}
           <p style={{ fontSize: '2rem', color: '#1a1a1a', marginBottom: '20px', fontWeight: '400' }}>
-            Rs. {selectedVariant?.price}
+            ${selectedVariant?.price}
           </p>
 
-          {/* Variants */}
           <div style={{ marginBottom: '24px' }}>
             <p style={{ fontSize: '0.8rem', color: '#555', marginBottom: '12px' }}>Variants</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -167,7 +163,6 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Quantity + Add to Cart */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #ddd' }}>
               <button
@@ -226,7 +221,6 @@ const ProductDetail = () => {
       <div style={{ backgroundColor: '#f5f5f5', padding: '48px 0' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px' }}>
 
-          {/* Steeping Instructions */}
           <div>
             <h3 style={{ fontFamily: 'Georgia, serif', fontSize: '1.3rem', color: '#1a1a1a', marginBottom: '28px', fontWeight: 'normal' }}>
               Steeping instructions
@@ -249,7 +243,6 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* About this tea */}
           <div>
             <h3 style={{ fontFamily: 'Georgia, serif', fontSize: '1.3rem', color: '#1a1a1a', marginBottom: '28px', fontWeight: 'normal' }}>
               About this tea
@@ -279,7 +272,7 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* You may also like */}
+      {/* You may also like — Updated to Dollars */}
       {relatedProducts.length > 0 && (
         <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '56px 48px' }}>
           <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '1.6rem', color: '#1a1a1a', textAlign: 'center', marginBottom: '40px', fontWeight: 'normal' }}>
@@ -313,7 +306,7 @@ const ProductDetail = () => {
                 <p style={{ fontSize: '0.85rem', color: '#444', marginBottom: '2px', lineHeight: '1.4' }}>{p.name}</p>
                 <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '6px' }}>{p.category.replace('-', ' ')}</p>
                 <p style={{ fontSize: '0.82rem', color: '#555' }}>
-                  Rs. {p.variants[0]?.price}
+                  ${p.variants[0]?.price}
                   <span style={{ fontSize: '0.75rem', color: '#aaa' }}> / {p.variants[0]?.name}</span>
                 </p>
               </Link>
@@ -347,7 +340,7 @@ const ProductDetail = () => {
             <h4 style={{ fontSize: '0.75rem', letterSpacing: '0.15em', marginBottom: '16px' }}>CONTACT US</h4>
             <p style={{ fontSize: '0.8rem', color: '#101010', marginBottom: '6px' }}>📍 3 Falahi St, Posdaran Ave</p>
             <p style={{ fontSize: '0.8rem', color: '#060505', marginBottom: '6px' }}>✉ Email: info@teahouse.com</p>
-            <p style={{ fontSize: '0.8rem', color: '#0d0101', marginBottom: '6px' }}>📞 Tel: +92-300-0000000</p>
+            <p style={{ fontSize: '0.8rem', color: '#0d0101', marginBottom: '6px' }}>📞 Tel: +1-555-000-0000</p>
           </div>
         </div>
         <div style={{ maxWidth: '1100px', margin: '0 auto', borderTop: '1px solid #333', paddingTop: '16px', textAlign: 'center' }}>

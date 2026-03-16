@@ -17,10 +17,12 @@ const Checkout = () => {
     phone: '',
     address: '',
     city: '',
-    country: 'Pakistan',
+    country: 'United States', // Updated default country
   });
   const navigate = useNavigate();
-  const DELIVERY = 395;
+  
+  // Updated delivery fee to a dollar amount (e.g., $5.00)
+  const DELIVERY = 5.00; 
 
   useEffect(() => {
     setLoading(true);
@@ -119,13 +121,11 @@ const Checkout = () => {
         <div>
           {step === 1 && (
             <div>
-              {/* Cart Items */}
               {cart.items.length === 0 ? (
                 <p style={{ color: '#aaa', fontSize: '0.85rem' }}>Your bag is empty</p>
               ) : (
                 cart.items.map((item) => (
                   <div key={item._id} style={{ display: 'flex', gap: '16px', paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid #f0f0f0' }}>
-                    {/* Image */}
                     <div style={{ width: '72px', height: '72px', backgroundColor: '#f5f5f5', flexShrink: 0, overflow: 'hidden' }}>
                       {item.product?.images?.[0] ? (
                         <img src={item.product.images[0]} alt={item.product?.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -134,13 +134,12 @@ const Checkout = () => {
                       )}
                     </div>
 
-                    {/* Info */}
                     <div style={{ flex: 1 }}>
                       <p style={{ fontSize: '0.82rem', color: '#333', marginBottom: '2px' }}>
                         {item.product?.name} - {item.variant.name}
                       </p>
                       <p style={{ fontSize: '0.78rem', color: '#aaa', marginBottom: '8px' }}>
-                        Rs. {item.variant.price}
+                        ${item.variant.price}
                       </p>
 
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -152,7 +151,7 @@ const Checkout = () => {
                             style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem', color: '#333' }}>+</button>
                         </div>
                         <p style={{ fontSize: '0.85rem', color: '#333', fontWeight: '500' }}>
-                          Rs. {item.variant.price * item.quantity}
+                          ${(item.variant.price * item.quantity).toFixed(2)}
                         </p>
                       </div>
 
@@ -165,15 +164,13 @@ const Checkout = () => {
                 ))
               )}
 
-              {/* Subtotal */}
               {cart.items.length > 0 && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', paddingTop: '8px' }}>
                   <span style={{ fontSize: '0.85rem', color: '#555' }}>Subtotal</span>
-                  <span style={{ fontSize: '0.85rem', color: '#333' }}>Rs. {cart.totalPrice}</span>
+                  <span style={{ fontSize: '0.85rem', color: '#333' }}>${cart.totalPrice.toFixed(2)}</span>
                 </div>
               )}
 
-              {/* Back to Shopping */}
               <Link to="/collections"
                 style={{ display: 'inline-block', border: '1px solid #ddd', padding: '10px 24px', fontSize: '0.78rem', letterSpacing: '0.08em', color: '#555', textDecoration: 'none' }}>
                 BACK TO SHOPPING
@@ -189,10 +186,10 @@ const Checkout = () => {
 
               {[
                 { label: 'Full Name', key: 'fullName', placeholder: 'Your full name' },
-                { label: 'Phone', key: 'phone', placeholder: '+92 300 0000000' },
+                { label: 'Phone', key: 'phone', placeholder: '+1 (000) 000-0000' },
                 { label: 'Address', key: 'address', placeholder: 'Street address' },
                 { label: 'City', key: 'city', placeholder: 'City' },
-                { label: 'Country', key: 'country', placeholder: 'Pakistan' },
+                { label: 'Country', key: 'country', placeholder: 'United States' },
               ].map((field) => (
                 <div key={field.key} style={{ marginBottom: '16px' }}>
                   <label style={{ display: 'block', fontSize: '0.78rem', color: '#555', marginBottom: '6px' }}>{field.label}</label>
@@ -222,21 +219,20 @@ const Checkout = () => {
 
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
               <span style={{ fontSize: '0.82rem', color: '#555' }}>Subtotal</span>
-              <span style={{ fontSize: '0.82rem', color: '#333' }}>Rs. {cart.totalPrice}</span>
+              <span style={{ fontSize: '0.82rem', color: '#333' }}>${cart.totalPrice.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid #eee' }}>
               <span style={{ fontSize: '0.82rem', color: '#555' }}>Delivery</span>
-              <span style={{ fontSize: '0.82rem', color: '#333' }}>Rs. {DELIVERY}</span>
+              <span style={{ fontSize: '0.82rem', color: '#333' }}>${DELIVERY.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.95rem', color: '#1a1a1a', fontWeight: '500' }}>Total</span>
-              <span style={{ fontSize: '1rem', color: '#1a1a1a', fontWeight: '500' }}>Rs. {cart.totalPrice + DELIVERY}</span>
+              <span style={{ fontSize: '1rem', color: '#1a1a1a', fontWeight: '500' }}>${(cart.totalPrice + DELIVERY).toFixed(2)}</span>
             </div>
             <p style={{ fontSize: '0.72rem', color: '#aaa', marginBottom: '20px' }}>
-              Estimated shipping time: 2 days
+              Estimated shipping time: 2-5 days
             </p>
 
-            {/* Checkout / Place Order Button */}
             {step === 1 && (
               <button
                 onClick={() => setStep(2)}
@@ -258,7 +254,6 @@ const Checkout = () => {
             )}
           </div>
 
-          {/* Delivery and Return */}
           <div style={{ border: '1px solid #eee', padding: '24px' }}>
             <h3 style={{ fontFamily: 'Georgia, serif', fontSize: '1rem', color: '#1a1a1a', marginBottom: '16px', fontWeight: 'normal' }}>
               Delivery and return
@@ -297,7 +292,7 @@ const Checkout = () => {
                 <p style={{ fontSize: '0.82rem', color: '#444', marginBottom: '2px' }}>{p.name}</p>
                 <p style={{ fontSize: '0.78rem', color: '#888', marginBottom: '4px' }}>{p.category.replace('-', ' ')}</p>
                 <p style={{ fontSize: '0.8rem', color: '#555' }}>
-                  Rs. {p.variants[0]?.price}
+                  ${p.variants[0]?.price}
                   <span style={{ fontSize: '0.72rem', color: '#aaa' }}> / {p.variants[0]?.name}</span>
                 </p>
               </Link>
@@ -329,9 +324,9 @@ const Checkout = () => {
           </div>
           <div>
             <h4 style={{ fontSize: '0.75rem', letterSpacing: '0.15em', marginBottom: '16px' }}>CONTACT US</h4>
-            <p style={{ fontSize: '0.8rem', color: '#020202', marginBottom: '6px' }}>📍 3 Falahi St, Posdaran Ave</p>
+            <p style={{ fontSize: '0.8rem', color: '#020202', marginBottom: '6px' }}>📍 123 Tea Lane, New York, NY</p>
             <p style={{ fontSize: '0.8rem', color: '#050404', marginBottom: '6px' }}>✉ Email: info@teahouse.com</p>
-            <p style={{ fontSize: '0.8rem', color: '#020202', marginBottom: '6px' }}>📞 Tel: +92-300-0000000</p>
+            <p style={{ fontSize: '0.8rem', color: '#020202', marginBottom: '6px' }}>📞 Tel: +1 (555) 000-0000</p>
           </div>
         </div>
         <div style={{ maxWidth: '1100px', margin: '0 auto', borderTop: '1px solid #333', paddingTop: '16px', textAlign: 'center' }}>

@@ -23,7 +23,7 @@ const AdminDashboard = () => {
     try {
       await updateOrderStatus(orderId, status);
       setOrders((prev) =>
-        prev.map((o) => o._id === orderId ? { ...o, status } : o)
+        prev.map((o) => (o._id === orderId ? { ...o, status } : o))
       );
     } catch (err) {
       alert(err.response?.data?.message || 'Error updating status');
@@ -41,30 +41,34 @@ const AdminDashboard = () => {
     return colors[status] || { bg: '#f5f5f5', color: '#888' };
   };
 
-  if (loading) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <p style={{ color: '#aaa' }}>Loading dashboard...</p>
-    </div>
-  );
+  if (loading)
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ color: '#aaa' }}>Loading dashboard...</p>
+      </div>
+    );
 
   return (
     <div style={{ backgroundColor: '#f9f9f9', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Navbar />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 48px' }}>
-
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '1.8rem', color: '#1a1a1a', fontWeight: 'normal' }}>
             Admin Dashboard
           </h1>
           <div style={{ display: 'flex', gap: '12px' }}>
-            <Link to="/admin/products"
-              style={{ padding: '8px 20px', backgroundColor: '#1a1a1a', color: '#fff', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '0.08em' }}>
+            <Link
+              to="/admin/products"
+              style={{ padding: '8px 20px', backgroundColor: '#1a1a1a', color: '#fff', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '0.08em' }}
+            >
               MANAGE PRODUCTS
             </Link>
-            <Link to="/admin/users"
-              style={{ padding: '8px 20px', border: '1px solid #ddd', color: '#555', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '0.08em' }}>
+            <Link
+              to="/admin/users"
+              style={{ padding: '8px 20px', border: '1px solid #ddd', color: '#555', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '0.08em' }}
+            >
               MANAGE USERS
             </Link>
           </div>
@@ -73,7 +77,12 @@ const AdminDashboard = () => {
         {/* Stats Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
           {[
-            { label: 'Total Revenue', value: `Rs. ${stats?.totalRevenue || 0}`, icon: '💰', color: '#e8f5e9' },
+            { 
+              label: 'Total Revenue', 
+              value: `$${(stats?.totalRevenue || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, 
+              icon: '💰', 
+              color: '#e8f5e9' 
+            },
             { label: 'Total Orders', value: stats?.totalOrders || 0, icon: '📦', color: '#e3f2fd' },
             { label: 'Total Users', value: stats?.totalUsers || 0, icon: '👥', color: '#f3e5f5' },
             { label: 'Total Products', value: stats?.totalProducts || 0, icon: '🍵', color: '#fff8e1' },
@@ -154,17 +163,20 @@ const AdminDashboard = () => {
                       {order.items?.length} item(s)
                     </td>
                     <td style={{ padding: '14px 16px', fontSize: '0.78rem', color: '#333', fontWeight: '500' }}>
-                      Rs. {order.totalPrice}
+                      ${(order.totalPrice || 0).toFixed(2)}
                     </td>
                     <td style={{ padding: '14px 16px' }}>
-                      <span style={{
-                        padding: '4px 10px',
-                        borderRadius: '20px',
-                        fontSize: '0.72rem',
-                        backgroundColor: statusColor(order.status).bg,
-                        color: statusColor(order.status).color,
-                        fontWeight: '500',
-                      }}>
+                      <span
+                        style={{
+                          padding: '4px 10px',
+                          borderRadius: '20px',
+                          fontSize: '0.72rem',
+                          backgroundColor: statusColor(order.status).bg,
+                          color: statusColor(order.status).color,
+                          fontWeight: '500',
+                          textTransform: 'capitalize'
+                        }}
+                      >
                         {order.status}
                       </span>
                     </td>
@@ -178,7 +190,9 @@ const AdminDashboard = () => {
                         style={{ border: '1px solid #ddd', padding: '4px 8px', fontSize: '0.75rem', color: '#333', outline: 'none', cursor: 'pointer' }}
                       >
                         {['pending', 'processing', 'shipped', 'delivered', 'cancelled'].map((s) => (
-                          <option key={s} value={s}>{s}</option>
+                          <option key={s} value={s}>
+                            {s.charAt(0).toUpperCase() + s.slice(1)}
+                          </option>
                         ))}
                       </select>
                     </td>

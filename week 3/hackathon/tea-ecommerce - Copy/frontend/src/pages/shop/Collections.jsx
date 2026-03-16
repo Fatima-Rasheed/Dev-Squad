@@ -111,7 +111,7 @@ const Collections = () => {
       {/* Banner */}
       <div style={{ width: '100%', height: '200px', overflow: 'hidden' }}>
         <img
-          src="https://images.unsplash.com/photo-1613987108430-b4bb3863e595?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1500"
+          src="https://images.unsplash.com/photo-1613987108430-b4bb3863e595?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Collections Banner"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
@@ -133,7 +133,6 @@ const Collections = () => {
         {/* Sidebar */}
         <div style={{ width: '180px', flexShrink: 0, paddingTop: '8px' }}>
 
-          {/* Collections */}
           <SidebarSection title="COLLECTIONS" sectionKey="collections" count={categoryFromUrl ? 1 : 0}>
             {[
               { label: 'All Teas', value: '' },
@@ -161,14 +160,12 @@ const Collections = () => {
             ))}
           </SidebarSection>
 
-          {/* Origin */}
           <SidebarSection title="ORIGIN" sectionKey="origin" count={0}>
             {['India', 'China', 'Japan', 'South Africa'].map((o) => (
               <CheckboxItem key={o} label={o} checked={false} onChange={() => {}} />
             ))}
           </SidebarSection>
 
-          {/* Flavour */}
           <SidebarSection title="FLAVOUR" sectionKey="flavor" count={filters.flavor ? 1 : 0}>
             {flavors.map((f) => (
               <CheckboxItem
@@ -184,21 +181,18 @@ const Collections = () => {
             ))}
           </SidebarSection>
 
-          {/* Qualities */}
           <SidebarSection title="QUALITIES" sectionKey="qualities" count={0}>
             {['Energy', 'Relax', 'Protein', 'Digestion'].map((q) => (
               <CheckboxItem key={q} label={q} checked={false} onChange={() => {}} />
             ))}
           </SidebarSection>
 
-          {/* Caffeine */}
           <SidebarSection title="CAFFEINE" sectionKey="caffeine" count={0}>
             {['No Caffeine', 'Low Caffeine', 'Medium Caffeine', 'High Caffeine'].map((c) => (
               <CheckboxItem key={c} label={c} checked={false} onChange={() => {}} />
             ))}
           </SidebarSection>
 
-          {/* Allergens */}
           <SidebarSection title="ALLERGENS" sectionKey="allergens" count={0}>
             {['Gluten Free', 'Dairy Free', 'Nut Free', 'Soy Free'].map((a) => (
               <CheckboxItem key={a} label={a} checked={false} onChange={() => {}} />
@@ -213,9 +207,9 @@ const Collections = () => {
             </div>
           </div>
 
-          {/* Price Filter */}
+          {/* Price Filter ($) */}
           <div style={{ paddingTop: '12px' }}>
-            <p style={{ fontSize: '0.72rem', letterSpacing: '0.1em', color: '#333', fontWeight: '600', marginBottom: '8px' }}>PRICE</p>
+            <p style={{ fontSize: '0.72rem', letterSpacing: '0.1em', color: '#333', fontWeight: '600', marginBottom: '8px' }}>PRICE ($)</p>
             <div style={{ display: 'flex', gap: '6px' }}>
               <input
                 type="number"
@@ -283,7 +277,7 @@ const Collections = () => {
                       {product.category.replace('-', ' ')}
                     </p>
                     <p style={{ fontSize: '0.82rem', color: '#333' }}>
-                      Rs. {product.variants[0]?.price}
+                      ${(product.variants[0]?.price || 0).toFixed(2)}
                       <span style={{ fontSize: '0.72rem', color: '#aaa' }}> / {product.variants[0]?.name}</span>
                     </p>
                   </div>
@@ -340,7 +334,7 @@ const Collections = () => {
             <h4 style={{ fontSize: '0.75rem', letterSpacing: '0.15em', marginBottom: '16px' }}>CONTACT US</h4>
             <p style={{ fontSize: '0.8rem', color: '#080808', marginBottom: '6px' }}>📍 3 South Tea Pleasure Ave</p>
             <p style={{ fontSize: '0.8rem', color: '#0e0d0d', marginBottom: '6px' }}>✉ info@teahouse.com</p>
-            <p style={{ fontSize: '0.8rem', color: '#060606', marginBottom: '6px' }}>📞 +92-300-0000000</p>
+            <p style={{ fontSize: '0.8rem', color: '#060606', marginBottom: '6px' }}>📞 +1-800-TEA-TIME</p>
           </div>
         </div>
         <div style={{ maxWidth: '1100px', margin: '0 auto', borderTop: '1px solid #333', paddingTop: '16px', textAlign: 'center' }}>
