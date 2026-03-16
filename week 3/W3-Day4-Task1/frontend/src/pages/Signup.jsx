@@ -55,7 +55,7 @@ const Signup = () => {
     setSuccess("");
 
     try {
-      await api.post("/auth/register", { name, email, password });
+      await api.post("https://backend-ten-green-77.vercel.app/api/auth/register", { name, email, password });
       setSuccess("Account created! Redirecting to login...");
 
       // ✅ Clear form
