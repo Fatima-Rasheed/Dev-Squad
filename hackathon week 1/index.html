@@ -24,7 +24,7 @@
                         }
                     },
                     backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(30, 20, 10, 0.8), rgba(30, 20, 10, 1)), url('assets/img (23).png')",
+  'hero-pattern': "linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.92)), url('assets/img (23).png')",
                     }
                 },
                 plugins: [
@@ -62,6 +62,9 @@
         }
     </script>
     <style>
+        .bg-hero-pattern {
+    background-blend-mode: multiply;
+}
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -84,13 +87,13 @@
     <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/5 transition-all duration-300 py-4">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
             <!-- Logo -->
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0 ml-8">
                 <a href="#" class="text-2xl font-bold tracking-tight">Logo<span
-                        class="text-brand-orange">Here</span></a>
+                        class="">Here</span></a>
             </div>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center">
+<div class="hidden md:flex space-x-10 items-center ml-auto mr-12">
                 <a href="#about" class="text-sm font-medium hover:text-brand-orange transition-colors">About</a>
                 <a href="#collection"
                     class="text-sm font-medium hover:text-brand-orange transition-colors">Collection</a>
@@ -101,7 +104,7 @@
             <!-- CTA -->
             <div class="hidden md:block">
                 <button
-                    class="bg-gradient-to-r from-[#e78a4e] to-[#c76a2e] hover:from-[#c76a2e] hover:to-[#e78a4e] text-white px-8 py-2.5 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(231,138,78,0.3)]">
+                    class="bg-[#DA8F4D] hover:from-[#c76a2e] hover:to-[#e78a4e] text-white px-12 py-2  rounded-xl border  mr-16 font-medium transition-all ">
                     Sign in
                 </button>
             </div>
@@ -133,7 +136,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
                 <!-- Hero Content -->
-                <div class="text-center lg:text-left">
+                <div class="text-center lg:text-left ml-12">
                     <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
                         We Have High<br />
                         Quality <span class="text-brand-orange relative inline-block">NFT<svg
@@ -150,11 +153,11 @@
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-16">
                         <button
-                            class="bg-gradient-to-r from-[#e78a4e] to-[#c76a2e] hover:shadow-[0_0_20px_rgba(231,138,78,0.4)] text-white px-8 py-3.5 rounded-full font-semibold transition-all">
+                            class="bg-[#DA8F4D] hover:shadow-[0_0_20px_rgba(231,138,78,0.4)] text-white px-10 py-3.5 rounded-2xl border border-white font-semibold transition-all">
                             Get Whitelist
                         </button>
                         <button
-                            class="bg-transparent border border-white/30 hover:border-white hover:bg-white/5 text-white px-8 py-3.5 rounded-full font-semibold transition-all">
+                            class="bg-transparent border border-white hover:border-white hover:bg-white/5 text-white px-10 py-3.5  rounded-2xl  font-semibold transition-all">
                             Contact Us
                         </button>
                     </div>
@@ -173,15 +176,15 @@
 
                         <div>
                             <h3 class="text-3xl lg:text-4xl font-bold mb-1">240k+</h3>
-                            <p class="text-brand-gray text-sm tracking-wide">Total Sale</p>
+                            <p class="text-brand-gray text-lg tracking-wide">Total Sale</p>
                         </div>
                         <div>
                             <h3 class="text-3xl lg:text-4xl font-bold mb-1">100k+</h3>
-                            <p class="text-brand-gray text-sm tracking-wide">Auctions</p>
+                            <p class="text-brand-gray text-lg tracking-wide">Auctions</p>
                         </div>
                         <div>
                             <h3 class="text-3xl lg:text-4xl font-bold mb-1">240k+</h3>
-                            <p class="text-brand-gray text-sm tracking-wide">Artists</p>
+                            <p class="text-brand-gray text-lg tracking-wide">Artists</p>
                         </div>
                     </div>
                 </div>
@@ -190,7 +193,7 @@
                 <div class="relative mt-12 lg:mt-0 flex justify-center lg:justify-end">
                     <!-- Main Image frame -->
                     <div
-                        class="relative rounded-[40px] md:rounded-[80px] overflow-hidden border border-white/20 p-2 glass-panel w-full max-w-md mx-auto z-10">
+                        class="relative rounded-[40px] md:rounded-[80px] overflow-hidden border border-white/20 p-2 glass-panel   mr-10 w-full max-w-md mx-auto z-10">
                         <img src="assets/img (16).png"
                             alt="High Quality NFT Tiger"
                             class="w-full h-auto object-cover rounded-[32px] md:rounded-[72px]" />
@@ -453,15 +456,15 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ml-8 mr-8">
                 <!-- Creator Card Template (x8) -->
                 <!-- 1 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">1</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-blue-500/20 to-transparent">
+                        class="w-32 h-22 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-blue-500/20 to-transparent">
                         <img src="assets/img (5).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -471,11 +474,11 @@
                 </div>
                 <!-- 2 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative  transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">2</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-brand-orange/20 to-transparent">
+                        class="w-32 h-22 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-brand-orange/20 to-transparent">
                         <img src="assets/img (4).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -485,11 +488,11 @@
                 </div>
                 <!-- 3 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative  transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">3</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-500/20 to-transparent">
+                        class="w-32 h-22 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-500/20 to-transparent">
                         <img src="assets/img (3).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -499,11 +502,11 @@
                 </div>
                 <!-- 4 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">4</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-purple-500/20 to-transparent">
+                        class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-purple-500/20 to-transparent">
                         <img src="assets/img (2).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -513,11 +516,11 @@
                 </div>
                 <!-- 5 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative  transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">5</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-green-500/20 to-transparent">
+                        class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-green-500/20 to-transparent">
                         <img src="assets/img (1).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -527,11 +530,11 @@
                 </div>
                 <!-- 6 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">6</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-indigo-500/20 to-transparent">
+                        class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-indigo-500/20 to-transparent">
                         <img src="assets/img (8).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -541,11 +544,11 @@
                 </div>
                 <!-- 7 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative  transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">7</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-600/20 to-transparent">
+                        class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-yellow-600/20 to-transparent">
                         <img src="assets/img (19).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
@@ -555,11 +558,11 @@
                 </div>
                 <!-- 8 -->
                 <div
-                    class="bg-[#2a1a0c] rounded-3xl p-6 text-center relative hover:bg-[#221f1c] transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
+                    class="bg-[#E6DCBA33] rounded-3xl p-6 text-center relative  transition-colors group cursor-pointer border border-transparent hover:border-brand-orange/20">
                     <span
                         class="absolute top-6 left-6 text-brand-light/40 font-medium group-hover:text-brand-orange transition-colors">8</span>
                     <div
-                        class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-gray-500/20 to-transparent">
+                        class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 p-1 bg-gradient-to-br from-gray-500/20 to-transparent">
                         <img src="assets/img (18).png"
                             alt="Creator" class="w-full h-full object-cover rounded-full">
                     </div>
