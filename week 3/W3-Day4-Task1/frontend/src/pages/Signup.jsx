@@ -55,7 +55,7 @@ const Signup = () => {
     setSuccess("");
 
     try {
-      await api.post(" https://week3-day4backend.vercel.app /auth/register", { name, email, password });
+      await api.post("https://week3-day4backend.vercel.app/api/auth/register", { name, email, password });
       setSuccess("Account created! Redirecting to login...");
 
       // ✅ Clear form
