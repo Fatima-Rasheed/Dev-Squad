@@ -9,26 +9,17 @@ const app = express();
 // ✅ Body parser
 app.use(express.json());
 
-// ✅ CORS middleware for both local & deployed frontend
-const allowedOrigins = [
-  "http://localhost:5173",      // local dev frontend
-  process.env.CLIENT_URL        // deployed frontend
-];
-
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-
-  // Handle preflight request
-  if (req.method === "OPTIONS") return res.sendStatus(200);
-
-  next();
-});
+// ✅ CORS - using cors package with hardcoded origins
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://week3-day4-pi.vercel.app",  // ← hardcoded
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+app.options("*", cors()); // ← handles preflight for all routes
 
 // ✅ MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
@@ -36,8 +27,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error("❌ MongoDB connection failed:", err.message));
 
 // ✅ Routes
-app.use("/auth", require("./routes/auth"));
-app.use("/members", require("./routes/members"));
+app.use("/auth",     require("./routes/auth"));
+app.use("/members",  require("./routes/members"));
 app.use("/projects", require("./routes/projects"));
 
 // ✅ Health check
@@ -56,7 +47,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-// ✅ Start server locally (Vercel handles production)
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
