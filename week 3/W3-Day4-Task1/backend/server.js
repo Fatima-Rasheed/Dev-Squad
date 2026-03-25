@@ -9,17 +9,9 @@ const app = express();
 // ✅ Body parser
 app.use(express.json());
 
-// ✅ CORS - using cors package with hardcoded origins
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://week3-day4-pi.vercel.app",  // ← hardcoded
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-app.options("*", cors()); // ← handles preflight for all routes
+// ✅ CORS - vercel.json handles headers, this just enables it
+app.use(cors({ origin: "*" }));
+app.options("*", cors());
 
 // ✅ MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
@@ -47,6 +39,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
+// ✅ Start server locally (Vercel handles production)
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
