@@ -51,7 +51,7 @@ const Login = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await api.post(" https://week3-day4backend.vercel.app/api/auth/login", { email, password });
+      const res = await api.post("https://week3-day4backend.vercel.app/api/auth/login", { email, password });
       setToken(res.data.token);
       navigate("/dashboard"); // ✅ correct redirect
     } catch (err) {
