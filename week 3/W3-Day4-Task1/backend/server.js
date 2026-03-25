@@ -7,9 +7,23 @@ dotenv.config();
 
 const app = express();
 
-// ✅ ================= CORS CONFIG =================
+// ✅ CORS CONFIG (allow both local dev & deployed frontend)
+const allowedOrigins = [
+  "http://localhost:5173", // local frontend
+  process.env.CLIENT_URL    // deployed frontend
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: function (origin, callback) {
+    // allow requests like Postman with no origin
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -17,12 +31,9 @@ app.use(cors({
 
 // ✅ Handle preflight
 app.options("*", cors());
-// =================================================
-
 
 // ✅ Body parser
 app.use(express.json());
-
 
 // ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
@@ -31,24 +42,20 @@ mongoose.connect(process.env.MONGO_URI)
     console.error("❌ MongoDB connection failed:", err.message);
   });
 
-
 // ✅ Health check route
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running" });
 });
-
 
 // ✅ Routes
 app.use("/auth", require("./routes/auth"));
 app.use("/members", require("./routes/members"));
 app.use("/projects", require("./routes/projects"));
 
-
 // ❌ 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
-
 
 // ❌ Global error handler
 app.use((err, req, res, next) => {
@@ -56,10 +63,14 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-
-// ✅ START SERVER (THIS WAS MISSING)
+// ✅ START SERVER locally only
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+// ✅ Export app for Vercel
+module.exports = app;
