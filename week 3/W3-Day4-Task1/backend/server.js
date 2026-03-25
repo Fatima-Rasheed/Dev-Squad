@@ -11,7 +11,7 @@ app.use(express.json());
 
 // ✅ CORS - vercel.json handles headers, this just enables it
 app.use(cors({ origin: "*" }));
-app.options("*", cors());
+// app.options("*", cors());
 
 // ✅ MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
