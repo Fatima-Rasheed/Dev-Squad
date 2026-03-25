@@ -7,8 +7,7 @@ dotenv.config();
 
 const app = express();
 
-
-// ✅ ================= CORS CONFIG (FINAL FIX) =================
+// ✅ ================= CORS CONFIG =================
 app.use(cors({
   origin: process.env.CLIENT_URL || "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -16,9 +15,9 @@ app.use(cors({
   credentials: true,
 }));
 
-// ✅ VERY IMPORTANT → handle preflight requests
+// ✅ Handle preflight
 app.options("*", cors());
-// ============================================================
+// =================================================
 
 
 // ✅ Body parser
@@ -30,7 +29,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => {
     console.error("❌ MongoDB connection failed:", err.message);
-    
   });
 
 
@@ -45,6 +43,7 @@ app.use("/auth", require("./routes/auth"));
 app.use("/members", require("./routes/members"));
 app.use("/projects", require("./routes/projects"));
 
+
 // ❌ 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
@@ -58,5 +57,9 @@ app.use((err, req, res, next) => {
 });
 
 
-// ✅ EXPORT for Vercel (NO app.listen)
-module.exports = app;
+// ✅ START SERVER (THIS WAS MISSING)
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
