@@ -9,8 +9,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Swagger
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// ✅ Swagger with CDN (works on both local and Vercel)
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customCssUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui.min.css",
+    customJs: [
+      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-bundle.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-standalone-preset.min.js",
+    ],
+  })
+);
 
 // Browser auto-requests
 app.get("/favicon.ico", (req, res) => res.status(204).end());
@@ -28,18 +39,17 @@ const startServer = async () => {
 
     app.use((err, req, res, next) => {
       console.error(err.stack);
-      res.status(500).json({ success: false, message: "Internal Server Error" });
+      res
+        .status(500)
+        .json({ success: false, message: "Internal Server Error" });
     });
 
-    // ✅ Only starts local server when run directly (node index.js)
-    // ✅ Skipped on Vercel since Vercel uses the exported app
     if (require.main === module) {
       const PORT = process.env.PORT || 3000;
       app.listen(PORT, () =>
         console.log(`Server running at http://localhost:${PORT}`)
       );
     }
-
   } catch (err) {
     console.error("Failed to start server:", err);
     process.exit(1);
@@ -48,5 +58,4 @@ const startServer = async () => {
 
 startServer();
 
-// ✅ Export for Vercel
 module.exports = app;

@@ -7,27 +7,28 @@ const options = {
       title: "Task Manager API",
       version: "1.0.0",
       description:
-        "A simple RESTful Task Manager API built with Node.js and Express. This API allows users to create, read, update, and delete tasks."
+        "A simple RESTful Task Manager API built with Node.js and Express.",
     },
     servers: [
-      { url: "http://localhost:3000", description: "Local server" }
+      { url: "http://localhost:3000", description: "Local server" },
+      { url: "https://w3-day2-task1.vercel.app", description: "Production server" }
     ],
     tags: [
       { name: "Tasks", description: "Task management endpoints" },
-      { name: "Auth", description: "User authentication endpoints" }
+      { name: "Auth", description: "User authentication endpoints" },
     ],
-    components: { // ✅ must be inside definition
+    components: {
       securitySchemes: {
         bearerAuth: {
           type: "http",
           scheme: "bearer",
-          bearerFormat: "JWT"
-        }
-      }
+          bearerFormat: "JWT",
+        },
+      },
     },
-    security: [{ bearerAuth: [] }] // ✅ also inside definition
+    security: [{ bearerAuth: [] }],
   },
-  apis: ["./routes/*.js"] // path to your annotated route files
+  apis: ["./routes/*.js"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
