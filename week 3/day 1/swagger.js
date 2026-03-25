@@ -10,6 +10,10 @@ const options = {
     },
     servers: [
       {
+        url: "https://week3-day1backend.vercel.app",
+        description: "Production server"
+      },
+      {
         url: "http://localhost:3000",
         description: "Local server"
       }
@@ -23,7 +27,7 @@ const options = {
   },
 
   // Files containing Swagger annotations
-  apis: ["./index.js"]   
+  apis: ["./index.js"]
 };
 
 const swaggerSpec = swaggerJsdoc(options);

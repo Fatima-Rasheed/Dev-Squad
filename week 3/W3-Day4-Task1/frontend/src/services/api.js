@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://week3-day4backend.vercel.app", // ✅ env variable
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/", // ✅ env variable
+ withCredentials: true, 
 });
 
 // ✅ Request interceptor — auto-attach token on every request
