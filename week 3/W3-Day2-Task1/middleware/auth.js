@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 require("dotenv").config();
@@ -18,10 +19,16 @@ const auth = async (req, res, next) => {
       return res.status(401).json({ success: false, message: "User not found" });
     }
 
-    req.user = user; // attach to request
+    req.user = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      uuid: user.uuid,
+    };
+
     next();
   } catch (err) {
-    console.error("Auth middleware error:", err); // log error for debugging
+    console.error("Auth middleware error:", err);
     return res.status(401).json({ success: false, message: "Invalid token" });
   }
 };

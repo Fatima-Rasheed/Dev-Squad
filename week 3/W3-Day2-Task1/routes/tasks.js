@@ -38,7 +38,7 @@ const { body, validationResult } = require("express-validator");
  */
 router.get("/", auth, async (req, res) => {
   try {
-    const tasks = await Task.find({ user: req.user._id });
+    const tasks = await Task.find({ user: req.user.id }); // ✅ fixed: was req.user._id
     res.json({ success: true, data: tasks });
   } catch (err) {
     console.error("GET /api/tasks error:", err);
@@ -97,7 +97,7 @@ router.post(
     }
 
     try {
-      const task = await Task.create({ ...req.body, user: req.user._id });
+      const task = await Task.create({ ...req.body, user: req.user.id }); // ✅ fixed: was req.user._id
       res.status(201).json({ success: true, data: task });
     } catch (err) {
       console.error("POST /api/tasks error:", err);
@@ -149,7 +149,7 @@ router.post(
 router.put("/:uuid", auth, async (req, res) => {
   try {
     const task = await Task.findOneAndUpdate(
-      { uuid: req.params.uuid, user: req.user._id }, // ✅ find by uuid
+      { uuid: req.params.uuid, user: req.user.id }, // ✅ fixed: was req.user._id
       req.body,
       { new: true, runValidators: true }
     );
@@ -193,8 +193,8 @@ router.put("/:uuid", auth, async (req, res) => {
 router.delete("/:uuid", auth, async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({
-      uuid: req.params.uuid,   // ✅ find by uuid
-      user: req.user._id,
+      uuid: req.params.uuid,
+      user: req.user.id, // ✅ fixed: was req.user._id
     });
 
     if (!task)

@@ -76,10 +76,23 @@ router.post(
           .json({ success: false, message: "Email already exists" });
 
       user = await User.create({ name, email, password });
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "1d",
+
+      const token = jwt.sign(
+        { id: user._id, uuid: user.uuid }, // ✅ fixed: added uuid to payload
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
+      );
+
+      res.status(201).json({
+        success: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          uuid: user.uuid, // ✅ returning uuid in response
+        },
+        token,
       });
-      res.status(201).json({ success: true, token });
     } catch (err) {
       console.error("Register error:", err);
       res.status(500).json({ success: false, message: "Server error" });
@@ -149,10 +162,22 @@ router.post(
           .status(400)
           .json({ success: false, message: "Invalid credentials" });
 
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
+      const token = jwt.sign(
+        { id: user._id, uuid: user.uuid }, // ✅ fixed: added uuid to payload
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+
+      res.json({
+        success: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          uuid: user.uuid, // ✅ returning uuid in response
+        },
+        token,
       });
-      res.json({ success: true, token });
     } catch (err) {
       console.error("Login error:", err);
       res.status(500).json({ success: false, message: "Server error" });

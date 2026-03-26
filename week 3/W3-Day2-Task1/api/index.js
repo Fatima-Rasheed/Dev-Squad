@@ -1,15 +1,22 @@
 require("dotenv").config();
 const express = require("express");
-const connectDB = require("./config/db.js");
+const connectDB = require("../config/db.js");
 const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./swagger");
+const swaggerSpec = require("../swagger.js");
 const cors = require("cors");
 
 const app = express();
+
+// ✅ Middleware
 app.use(express.json());
 app.use(cors());
 
-// ✅ Swagger with CDN (works on both local and Vercel)
+// ✅ Root route
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Task Manager API is running 🚀" });
+});
+
+// ✅ Swagger docs (works on both local and Vercel)
 app.use(
   "/api-docs",
   swaggerUi.serve,
@@ -23,26 +30,25 @@ app.use(
   })
 );
 
-// Browser auto-requests
+// ✅ Favicon to avoid unnecessary browser requests
 app.get("/favicon.ico", (req, res) => res.status(204).end());
-app.get("/", (req, res) => {
-  res.json({ success: true, message: "Task Manager API is running" });
+
+// ✅ Routes
+app.use("/api/auth", require("../routes/auth.js")); // auth routes (register/login)
+app.use("/api/users", require("../routes/users.js")); // optional user management
+app.use("/api/tasks", require("../routes/tasks.js")); // your tasks routes
+
+// ✅ Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
+// ✅ Start server
 const startServer = async () => {
   try {
     await connectDB();
     console.log("MongoDB connected, starting server...");
-
-    app.use("/api/tasks", require("./routes/tasks"));
-    app.use("/api/users", require("./routes/users"));
-
-    app.use((err, req, res, next) => {
-      console.error(err.stack);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal Server Error" });
-    });
 
     if (require.main === module) {
       const PORT = process.env.PORT || 3000;
