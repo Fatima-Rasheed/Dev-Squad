@@ -3,7 +3,7 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const isProduction = process.env.VERCEL_URL || process.env.NODE_ENV === "production";
 
 const servers = isProduction
-  ? [{ url: "https://w3-day2-task1.vercel.app", description: "Production server" }]
+  ? [{ url: "https://w3-day2-task1.vercel.app/", description: "Production server" }]
   : [{ url: "http://localhost:3000", description: "Local server" }];
 
 const options = {

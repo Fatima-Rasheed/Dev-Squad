@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ✅ DB connection guard — ensures DB is ready on Vercel before any request
+// ✅ DB connection guard — runs before every request on Vercel
 app.use(async (req, res, next) => {
   try {
     await connectDB();
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.json({ success: true, message: "Task Manager API is running 🚀" });
 });
 
-// ✅ Favicon to avoid unnecessary browser requests
+// ✅ Favicon
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 // ✅ Swagger docs
@@ -55,22 +55,19 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
-// ✅ Start server (only for local, not Vercel)
-const startServer = async () => {
-  try {
-    await connectDB();
-    if (require.main === module) {
-      const PORT = process.env.PORT || 3000;
+// ✅ Local development only — Vercel does NOT need app.listen()
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  connectDB()
+    .then(() => {
       app.listen(PORT, () =>
         console.log(`Server running at http://localhost:${PORT}`)
       );
-    }
-  } catch (err) {
-    console.error("Failed to start server:", err);
-    process.exit(1);
-  }
-};
+    })
+    .catch((err) => {
+      console.error("Failed to connect to DB:", err);
+      process.exit(1); // ✅ safe here — only runs locally, never on Vercel
+    });
+}
 
-startServer();
-
-module.exports = app;
+module.exports = app; // ✅ Vercel just imports this and handles requests
