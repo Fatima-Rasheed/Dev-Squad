@@ -11,12 +11,26 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// ✅ DB connection guard — ensures DB is ready on Vercel before any request
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("DB connection failed:", err);
+    res.status(500).json({ success: false, message: "DB connection failed" });
+  }
+});
+
 // ✅ Root route
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Task Manager API is running 🚀" });
 });
 
-// ✅ Swagger docs (works on both local and Vercel)
+// ✅ Favicon to avoid unnecessary browser requests
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
+// ✅ Swagger docs
 app.use(
   "/api-docs",
   swaggerUi.serve,
@@ -30,13 +44,10 @@ app.use(
   })
 );
 
-// ✅ Favicon to avoid unnecessary browser requests
-app.get("/favicon.ico", (req, res) => res.status(204).end());
-
 // ✅ Routes
-app.use("/api/auth", require("../routes/auth.js")); // auth routes (register/login)
-app.use("/api/users", require("../routes/users.js")); // optional user management
-app.use("/api/tasks", require("../routes/tasks.js")); // your tasks routes
+app.use("/api/auth", require("../routes/auth.js"));
+app.use("/api/users", require("../routes/users.js"));
+app.use("/api/tasks", require("../routes/tasks.js"));
 
 // ✅ Global error handler
 app.use((err, req, res, next) => {
@@ -44,12 +55,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
-// ✅ Start server
+// ✅ Start server (only for local, not Vercel)
 const startServer = async () => {
   try {
     await connectDB();
-    console.log("MongoDB connected, starting server...");
-
     if (require.main === module) {
       const PORT = process.env.PORT || 3000;
       app.listen(PORT, () =>

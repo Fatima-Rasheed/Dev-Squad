@@ -22,17 +22,6 @@ const { body, validationResult } = require("express-validator");
  *     responses:
  *       200:
  *         description: Successfully retrieved tasks
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
  *       500:
  *         description: Internal server error
  */
@@ -131,13 +120,10 @@ router.post(
  *             properties:
  *               title:
  *                 type: string
- *                 example: Update project documentation
  *               description:
  *                 type: string
- *                 example: Add README and API docs
  *               completed:
  *                 type: boolean
- *                 example: true
  *     responses:
  *       200:
  *         description: Task updated successfully
@@ -155,9 +141,7 @@ router.put("/:uuid", auth, async (req, res) => {
     );
 
     if (!task)
-      return res
-        .status(404)
-        .json({ success: false, message: "Task not found" });
+      return res.status(404).json({ success: false, message: "Task not found" });
 
     res.json({ success: true, data: task });
   } catch (err) {
@@ -198,9 +182,7 @@ router.delete("/:uuid", auth, async (req, res) => {
     });
 
     if (!task)
-      return res
-        .status(404)
-        .json({ success: false, message: "Task not found" });
+      return res.status(404).json({ success: false, message: "Task not found" });
 
     res.json({ success: true, data: task });
   } catch (err) {
