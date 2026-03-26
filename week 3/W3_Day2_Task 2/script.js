@@ -26,22 +26,39 @@ const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
 const sunIcon = sun.querySelector("img");
 const moonIcon = moon.querySelector("img");
-
 const themeToggler = document.getElementById("themeToggler");
-themeToggler.addEventListener("click", function () {
-  if (sunIcon.classList.contains("hidden")) {
-    sunIcon.classList.remove("hidden");
-    sun.classList.remove("otherMode");
-    moonIcon.classList.add("hidden");
-    moon.classList.add("otherMode");
-    document.documentElement.classList.remove('dark')
-  } else if (moonIcon.classList.contains("hidden")) {
+
+// Function to set the theme
+function setTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark');
     sunIcon.classList.add("hidden");
     sun.classList.add("otherMode");
     moonIcon.classList.remove("hidden");
     moon.classList.remove("otherMode");
-        document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    sunIcon.classList.remove("hidden");
+    sun.classList.remove("otherMode");
+    moonIcon.classList.add("hidden");
+    moon.classList.add("otherMode");
+    localStorage.setItem('theme', 'light');
   }
+}
+
+// Check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  setTheme(true);
+} else {
+  // Default to light or check system preference if needed, but here we follow current logic
+  setTheme(false);
+}
+
+themeToggler.addEventListener("click", function () {
+  const isDark = document.documentElement.classList.contains('dark');
+  setTheme(!isDark);
 });
 
 

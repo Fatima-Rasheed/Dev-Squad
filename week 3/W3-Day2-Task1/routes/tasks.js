@@ -108,19 +108,20 @@ router.post(
 
 /**
  * @swagger
- * /api/tasks/{id}:
+ * /api/tasks/{uuid}:
  *   put:
- *     summary: Update an existing task
+ *     summary: Update an existing task by UUID
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
  *     parameters:
- *       - name: id
+ *       - name: uuid
  *         in: path
  *         required: true
- *         description: Task ID
+ *         description: Task UUID
  *         schema:
  *           type: string
+ *           example: "550e8400-e29b-41d4-a716-446655440000"
  *     requestBody:
  *       required: false
  *       content:
@@ -145,10 +146,10 @@ router.post(
  *       500:
  *         description: Internal server error
  */
-router.put("/:id", auth, async (req, res) => {
+router.put("/:uuid", auth, async (req, res) => {
   try {
     const task = await Task.findOneAndUpdate(
-      { _id: req.params.id, user: req.user._id },
+      { uuid: req.params.uuid, user: req.user._id }, // ✅ find by uuid
       req.body,
       { new: true, runValidators: true }
     );
@@ -160,26 +161,27 @@ router.put("/:id", auth, async (req, res) => {
 
     res.json({ success: true, data: task });
   } catch (err) {
-    console.error("PUT /api/tasks/:id error:", err);
+    console.error("PUT /api/tasks/:uuid error:", err);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });
 
 /**
  * @swagger
- * /api/tasks/{id}:
+ * /api/tasks/{uuid}:
  *   delete:
- *     summary: Delete a task
+ *     summary: Delete a task by UUID
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
  *     parameters:
- *       - name: id
+ *       - name: uuid
  *         in: path
  *         required: true
- *         description: Task ID
+ *         description: Task UUID
  *         schema:
  *           type: string
+ *           example: "550e8400-e29b-41d4-a716-446655440000"
  *     responses:
  *       200:
  *         description: Task deleted successfully
@@ -188,10 +190,10 @@ router.put("/:id", auth, async (req, res) => {
  *       500:
  *         description: Internal server error
  */
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:uuid", auth, async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({
-      _id: req.params.id,
+      uuid: req.params.uuid,   // ✅ find by uuid
       user: req.user._id,
     });
 
@@ -202,7 +204,7 @@ router.delete("/:id", auth, async (req, res) => {
 
     res.json({ success: true, data: task });
   } catch (err) {
-    console.error("DELETE /api/tasks/:id error:", err);
+    console.error("DELETE /api/tasks/:uuid error:", err);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });
