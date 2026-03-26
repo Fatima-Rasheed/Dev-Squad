@@ -5,12 +5,12 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
   const [editForm, setEditForm] = useState({ title: "", description: "", completed: false });
 
   const startEdit = (task) => {
-    setEditingId(task._id);
+    setEditingId(task.uuid);
     setEditForm({ title: task.title, description: task.description, completed: task.completed });
   };
 
-  const handleSave = async (id) => {
-    await onUpdate(id, editForm);
+  const handleSave = async (uuid) => {
+    await onUpdate(uuid, editForm);
     setEditingId(null);
   };
 
@@ -22,12 +22,10 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
     <div className="space-y-4">
       {tasks.map((task, index) => (
         <div
-          // Use task._id if available, fallback to index
-          key={task._id || index}
-          id={task._id || `task-${index}`} // added id attribute for HTML element
+          key={task.uuid || index}
           className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm"
         >
-          {editingId === task._id ? (
+          {editingId === task.uuid ? (
             <div className="space-y-2">
               <input
                 className="w-full p-2 border-2 border-slate-300 rounded"
@@ -48,7 +46,7 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
                 Completed
               </label>
               <button
-                onClick={() => handleSave(task._id)}
+                onClick={() => handleSave(task.uuid)}
                 className="bg-black text-white px-3 py-1 rounded hover:bg-gray-900 transition"
               >
                 Save
@@ -56,9 +54,7 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
             </div>
           ) : (
             <div>
-              <h3
-                className={`text-xl font-bold ${task.completed ? "line-through text-slate-400" : ""}`}
-              >
+              <h3 className={`text-xl font-bold ${task.completed ? "line-through text-slate-400" : ""}`}>
                 {task.title || "Untitled Task"}
               </h3>
               <p className="text-slate-600">{task.description || "No description"}</p>
@@ -68,9 +64,7 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
                   <input
                     type="checkbox"
                     checked={task.completed}
-                    onChange={() =>
-                      onUpdate(task._id, { ...task, completed: !task.completed })
-                    }
+                    onChange={() => onUpdate(task.uuid, { completed: !task.completed })}
                   />
                   <span>{task.completed ? "Completed" : "Mark Complete"}</span>
                 </label>
@@ -83,7 +77,7 @@ export const TaskList = ({ tasks, onDelete, onUpdate }) => {
                     Edit
                   </button>
                   <button
-                    onClick={() => onDelete(task._id)}
+                    onClick={() => onDelete(task.uuid)}
                     className="text-blue-500 font-bold hover:underline"
                   >
                     Delete

@@ -24,28 +24,17 @@ const TaskForm = ({ onTaskAdded }) => {
       setError(null);
       setSuccess(false);
 
-      console.log("Submitting task:", taskData);
       const response = await api.post("/tasks", taskData);
-      console.log("Full response.data:", response.data); // 👈 check shape in console
+      const newTask = response.data.data; // extract task object
 
-      // ✅ FIX: extract the actual task object from the response
-      const newTask = response.data.task || response.data.data || response.data;
-      console.log("newTask object:", newTask);
-
-      // Reset form
       setTaskData({ title: "", description: "", completed: false });
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
 
-      // Notify parent to update the task list
-      if (onTaskAdded) {
-        onTaskAdded(newTask); // ✅ now passes the actual task, not the wrapper
-      }
+      if (onTaskAdded) onTaskAdded(newTask);
     } catch (err) {
       console.error("Failed to add task:", err);
-      setError(
-        err.response?.data?.message || "Failed to add task. Please try again."
-      );
+      setError(err.response?.data?.message || "Failed to add task.");
     } finally {
       setLoading(false);
     }

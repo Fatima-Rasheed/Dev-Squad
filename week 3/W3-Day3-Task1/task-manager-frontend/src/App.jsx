@@ -11,7 +11,7 @@ function App() {
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+      
         {/* Redirect empty path to login */}
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
